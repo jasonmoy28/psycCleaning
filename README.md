@@ -4,8 +4,9 @@
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![R package version](https://img.shields.io/github/r-package/v/jasonmoy28/psycModel)]()
-[![Github last commit](https://img.shields.io/github/last-commit/jasonmoy28/psycModel)]()
+[![R package version](https://img.shields.io/github/r-package/v/jasonmoy28/psycCleaning)]()
+[![Github last commit](https://img.shields.io/github/last-commit/jasonmoy28/psycCleaning)]()
+[![Github last commit](https://img.shields.io/github/license/jasonmoy28/psycCleaning)]()
 <!-- badges: end -->
 
 
