@@ -1,7 +1,15 @@
 # psycCleaning
 ## Toolkit for Data Cleaning in Psychology
 
-[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R package version](https://img.shields.io/github/r-package/v/jasonmoy28/psycCleaning)]()
+[![Github last commit](https://img.shields.io/github/last-commit/jasonmoy28/psycCleaning)]()
+[![GPLv3license](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://perso.crans.org/besson/LICENSE.html)
+[![DOI](https://zenodo.org/badge/355749017.svg)](https://zenodo.org/badge/latestdoi/355749017)
+<!-- badges: end -->
+
 
 ## Installation
 Install using `devtools`
@@ -17,10 +25,10 @@ devtools::install_github('jasonmoy28/psycCleaning')
 
 **BibTex Entry:**
 @Manual {,  
-            title = {{psycCleaning} Toolkit for Data Cleaning in Psychology},  
-            author = {Jason Moy},  
-            year = {2021},  
-            url = {https://github.com/jasonmoy28/psycCleaning},  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title = {{psycCleaning} Toolkit for Data Cleaning in Psychology},  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author = {Jason Moy},  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;year = {2021},  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url = {https://github.com/jasonmoy28/psycCleaning},  
   }
 
 ## Updates
