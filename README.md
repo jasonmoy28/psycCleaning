@@ -1,9 +1,13 @@
 # psycCleaning
 ## Toolkit for Data Cleaning in Psychology
 
+
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R package version](https://img.shields.io/github/r-package/v/jasonmoy28/psycModel)]()
+[![Github last commit](https://img.shields.io/github/last-commit/jasonmoy28/psycModel)]()
 <!-- badges: end -->
+
 
 ## Installation
 Install using `devtools`
