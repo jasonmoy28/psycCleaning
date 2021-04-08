@@ -4,7 +4,7 @@ Title: Toolkit for Data Cleaning in Psychology
 Version: 0.1.0
 Author: Jason Moy
 Maintainer: Jason Moy <jasonmoy28@gmail.com>
-Description: Useful R package that integrate many data cleaning tool
+Description: Useful R package that integrate many data cleaning tool.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true

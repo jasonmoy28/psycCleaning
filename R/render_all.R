@@ -5,11 +5,9 @@
 #' @param dir directory path
 #' @param render_exist render existed pdf files or not
 #'
-#' @return
 #'
 #' @export
 #'
-#' @examples
 #'
 render_all = function(dir,render_exist = T) {
   files = list.files(dir)

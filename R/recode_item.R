@@ -7,7 +7,6 @@
 #' @param retain_code vector. the code to be retained. default is everything.
 #' @param reverse_code logical. Default as F. If T, it will use psych::reverse_code
 #'
-#' @return
 #' @export
 #'
 #' @examples
