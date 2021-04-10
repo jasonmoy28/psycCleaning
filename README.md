@@ -3,10 +3,9 @@
 
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R package version](https://img.shields.io/github/r-package/v/jasonmoy28/psycCleaning)]()
+[![R-CMD-check](https://github.com/jasonmoy28/psycCleaning/workflows/R-CMD-check/badge.svg)](https://github.com/jasonmoy28/psycCleaning/actions)
 [![Github last commit](https://img.shields.io/github/last-commit/jasonmoy28/psycCleaning)]()
-[![GPLv3license](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://perso.crans.org/besson/LICENSE.html)
 [![DOI](https://zenodo.org/badge/355749017.svg)](https://zenodo.org/badge/latestdoi/355749017)
 <!-- badges: end -->
 
