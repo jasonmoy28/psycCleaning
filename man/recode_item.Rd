@@ -26,9 +26,6 @@ recode_item(
 
 \item{retain_code}{vector. the code to be retained. default is everything.}
 }
-\value{
-
-}
 \description{
 Recode items of a dataframe (support reverse code)
 }

@@ -16,9 +16,9 @@
 #' summarize_missing_values(test_df,everything())
 #'
 summarize_missing_values = function(data, cols, group = NULL, print = F) {
-  cols = ggplot2::enquo(cols)
+  cols = enquo(cols)
   if (!is.null(group)) {
-    group = ggplot2::enquo(group)
+    group = enquo(group)
     return_df = data %>%
       dplyr::group_by(!!group) %>%
       dplyr::summarize(dplyr::across(!!cols, ~ sum(is.na(.))))

@@ -11,12 +11,6 @@ render_all(dir, render_exist = T)
 
 \item{render_exist}{render existed pdf files or not}
 }
-\value{
-
-}
 \description{
 It will render all RMarkdown files in the directory.
-}
-\examples{
-
 }

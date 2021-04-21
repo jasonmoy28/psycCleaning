@@ -18,6 +18,8 @@ Imports:
     magrittr,
     data.table,
     rmarkdown,
-    ggplot2
+    ggplot2,
+    rlang (>= 0.1.2)
 Suggests: 
+    roxygen2,
     covr

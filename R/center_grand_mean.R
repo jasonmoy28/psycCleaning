@@ -12,7 +12,7 @@
 #' center_grand_mean(iris,where(is.numeric))
 #'
 center_grand_mean = function(data, cols) {
-  cols = ggplot2::enquo(cols)
+  cols = enquo(cols)
   return_df = data %>%
     dplyr::mutate(dplyr::across(!!cols, function(x) { (x - mean(x,na.rm = T))}))
   return(return_df)

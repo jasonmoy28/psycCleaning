@@ -19,7 +19,7 @@ recode_item <- function(data,
                         code_to = NULL,
                         reverse_code = FALSE,
                         retain_code = "all") {
-  cols = ggplot2::enquo(cols)
+  cols = enquo(cols)
   data = data %>% dplyr::mutate(dplyr::across(!!cols,as.numeric))
 
   if (reverse_code == T) {

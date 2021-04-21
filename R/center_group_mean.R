@@ -16,8 +16,8 @@
 #'
 
 center_group_mean = function(data, cols, group){
-  cols = ggplot2::enquo(cols)
-  group = ggplot2::enquo(group)
+  cols = enquo(cols)
+  group = enquo(group)
   return_df = data %>%
     dplyr::group_by(dplyr::across(!!group)) %>%
     dplyr::mutate(dplyr::across(!!cols, function(x) { (x - mean(x,na.rm = T))})) %>%
