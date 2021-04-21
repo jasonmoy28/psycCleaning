@@ -21,6 +21,8 @@ The function will perform a rowise aggregation which then divided by the total n
 }
 \examples{
 test_df = data.frame(col1 = c(1,2,3,4),col2 = c(1,2,3,4), col3 = c(1,2,NA,4))
-composite_score(test_df, everything()) # as you can see row 3 was dropped
+composited_df = 
+
+
 
 }
