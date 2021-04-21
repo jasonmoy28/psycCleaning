@@ -5,7 +5,7 @@
 <!-- badges: start -->
 [![R package version](https://img.shields.io/github/r-package/v/jasonmoy28/psycCleaning)]()
 [![R-CMD-check](https://github.com/jasonmoy28/psycCleaning/workflows/R-CMD-check/badge.svg)](https://github.com/jasonmoy28/psycCleaning/actions)
-[![Github last commit](https://img.shields.io/github/last-commit/jasonmoy28/psycCleaning)]()
+[![Codecov test coverage](https://codecov.io/gh/jasonmoy28/psycCleaning/branch/master/graph/badge.svg)](https://codecov.io/gh/jasonmoy28/psycCleaning?branch=master)
 [![DOI](https://zenodo.org/badge/355749017.svg)](https://zenodo.org/badge/latestdoi/355749017)
 <!-- badges: end -->
 

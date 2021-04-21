@@ -19,3 +19,5 @@ Imports:
     data.table,
     rmarkdown,
     ggplot2
+Suggests: 
+    covr
