@@ -16,11 +16,3 @@ Install using `devtools`
 devtools::install_github('jasonmoy28/psycCleaning')
 ```
 
-## Credit
-**Authors:** [Jason Moy](https://jasonmoy.us)
-
-**Citation:** Moy, J. H. (2021). psycCleaning: Toolkit for Data Cleaning in Psychology. R package version 0.1.0, https://github.com/jasonmoy28/psycCleaning.
-
-## Updates
-### version 0.1.0 (released on 4/8/2021)
-* initial build of package
