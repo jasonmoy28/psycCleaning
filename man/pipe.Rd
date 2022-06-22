@@ -6,7 +6,10 @@
 \usage{
 lhs \%>\% rhs
 }
+\value{
+no return value
+}
 \description{
-See \code{magrittr::\link[magrittr:pipe]{\%>\%}} for details.
+Pipe operator
 }
 \keyword{internal}

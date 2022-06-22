@@ -4,12 +4,17 @@
 \alias{summarize_non_missing_values}
 \title{Count number of non-missing / non-NA values}
 \usage{
-summarize_non_missing_values(data, cols, group = NULL, print = F)
+summarize_non_missing_values(
+  data,
+  cols = dplyr::everything(),
+  group = NULL,
+  print = F
+)
 }
 \arguments{
 \item{data}{dataframe}
 
-\item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be centered}
+\item{cols}{vector or tidyselect syntax or helpers. default is all columns}
 
 \item{group}{character. pass to group_by}
 

@@ -7,6 +7,7 @@
 [![R-CMD-check](https://github.com/jasonmoy28/psycCleaning/workflows/R-CMD-check/badge.svg)](https://github.com/jasonmoy28/psycCleaning/actions)
 [![Codecov test coverage](https://codecov.io/gh/jasonmoy28/psycCleaning/branch/master/graph/badge.svg)](https://codecov.io/gh/jasonmoy28/psycCleaning?branch=master)
 [![DOI](https://zenodo.org/badge/355749017.svg)](https://zenodo.org/badge/latestdoi/355749017)
+[![R-CMD-check](https://github.com/jasonmoy28/psycCleaning/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jasonmoy28/psycCleaning/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 

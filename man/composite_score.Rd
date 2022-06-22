@@ -4,7 +4,11 @@
 \alias{composite_score}
 \title{Composite column}
 \usage{
-composite_score(data, cols, composite_col_name = "composited_column")
+composite_score(
+  data,
+  cols = tidyselect::everything(),
+  composite_col_name = "composited_column"
+)
 }
 \arguments{
 \item{data}{dataframe}
@@ -21,8 +25,7 @@ The function will perform a rowise aggregation which then divided by the total n
 }
 \examples{
 test_df = data.frame(col1 = c(1,2,3,4),col2 = c(1,2,3,4), col3 = c(1,2,NA,4))
-composited_df = 
-
+composited_df = composite_score(data = test_df)
 
 
 }

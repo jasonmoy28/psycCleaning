@@ -4,12 +4,14 @@
 \alias{print_table}
 \title{print_table (internal use only)}
 \usage{
-print_table(data_frame, digits = 3)
+print_table(data_frame, digits = 3, return = F)
 }
 \arguments{
 \item{data_frame}{data frame object}
 
 \item{digits}{number of digits to round to}
+
+\item{return}{T or F}
 }
 \value{
 no return value
