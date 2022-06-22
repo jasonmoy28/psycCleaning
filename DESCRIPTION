@@ -19,7 +19,9 @@ Imports:
     data.table,
     rmarkdown,
     ggplot2,
-    rlang (>= 0.1.2)
+    rlang (>= 0.1.2),
+    glue,
+    tidyselect
 Suggests: 
     roxygen2,
     covr
