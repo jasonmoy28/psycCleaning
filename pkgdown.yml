@@ -1,8 +1,8 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1
+pkgdown: 2.0.4
 pkgdown_sha: ~
 articles: {}
-last_built: 2021-04-21T04:18Z
+last_built: 2022-06-22T22:56Z
 urls:
   reference: https://jasonmoy28.github.io/psycCleaning/reference
   article: https://jasonmoy28.github.io/psycCleaning/articles
