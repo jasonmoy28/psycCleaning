@@ -20,7 +20,7 @@ recode_item <- function(data,
                         reverse_code = FALSE,
                         retain_code = "all") {
   
-  if (is.null(code_from) & reverse_code == FALSE & retain_code == 'all') {
+  if (is.null(code_from) & reverse_code == FALSE & all(retain_code == 'all')) {
     stop()
   }
   
