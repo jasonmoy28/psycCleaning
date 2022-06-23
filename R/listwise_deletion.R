@@ -13,8 +13,7 @@
 #' listwise_deletion(test_df,col1:col2) # you can see that the row with NA in col3 is not deleted
 #'
 listwise_deletion = function(data, cols) {
-  cols = enquo(cols)
   return_df = data %>%
-    dplyr::filter(dplyr::across(!!cols, ~ !is.na(.)))
+    dplyr::filter(dplyr::if_all(!!enquo(cols), ~ !is.na(.)))
   return(return_df)
 }
