@@ -7,9 +7,8 @@ testthat::test_that('summarize_missing_values: no grouping', {
   summarized_df = summarize_missing_values(test_df, everything())
   testthat::expect_equal(summarized_df,
                          data.frame(
-                           col1 = 0,
-                           col2 = 1,
-                           col3 = 1
+                           name = c('col1', 'col2', 'col3'),
+                           value = c(0, 1, 1)
                          ),
                          ignore_attr = TRUE)
 })
