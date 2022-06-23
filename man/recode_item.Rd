@@ -30,7 +30,7 @@ recode_item(
 Recode items of a dataframe (support reverse code)
 }
 \examples{
-test_df = data.frame(test_col = 1:5)
-recode_item(test_df, cols = test_col, reverse_code = TRUE, retain_code = 1:4)
+df1 = data.frame(x = 1:5)
+recode_item(df, cols = x, reverse_code = TRUE, retain_code = 1:4)
 
 }

@@ -15,7 +15,7 @@ composite_score(
 
 \item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be composite}
 
-\item{composite_col_name}{character. default as 'composited_column'. the column name of the composite column}
+\item{composite_col_name}{character. default as 'composite_column'. the column name of the composite column}
 }
 \value{
 return a dataframe with a new column with the composite score
@@ -25,7 +25,7 @@ The function will perform a rowise aggregation which then divided by the total n
 }
 \examples{
 test_df = data.frame(col1 = c(1,2,3,4),col2 = c(1,2,3,4), col3 = c(1,2,NA,4))
-composited_df = composite_score(data = test_df)
+composite_df = composite_score(data = test_df)
 
 
 }
