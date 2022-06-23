@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' df1 = data.frame(x = 1:5)
-#' recode_item(df1, cols = x, reverse_code = TRUE, retain_code = 1:4)
+#' recode_item(df1, cols = x, reverse_code = TRUE)
 #'
 recode_item <- function(data,
                         cols,
