@@ -1,7 +1,7 @@
-#' Recode items of a dataframe (support reverse code)
+#' Re-code items of a dataframe (support reverse code)
 #'
 #' @param data a dataframe
-#' @param cols vector or tidyselect syntax or helpers. column(s) that need to be recoded
+#' @param cols vector or tidyselect syntax or helpers. column(s) that need to be re-coded
 #' @param code_from vector. the order must match with vector for code_to
 #' @param code_to vector. the order must match with vector for code_from
 #' @param retain_code vector. the code to be retained. default is everything.

@@ -12,7 +12,7 @@ z_scored_grand_mean(data, cols)
 \item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be centered}
 }
 \value{
-retrun a dataframe with the columns z-scored (replace existing columns)
+return a dataframe with the columns z-scored (replace existing columns)
 }
 \description{
 Z-scored that uses the grand mean in the z-score formula

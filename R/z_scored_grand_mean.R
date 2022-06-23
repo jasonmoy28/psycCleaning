@@ -5,7 +5,7 @@
 #' @param cols vector or tidyselect syntax or helpers. column(s) that need to be centered
 #'
 #' @return
-#' retrun a dataframe with the columns z-scored (replace existing columns)
+#' return a dataframe with the columns z-scored (replace existing columns)
 #' @export
 #'
 #' @examples

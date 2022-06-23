@@ -2,7 +2,7 @@
 % Please edit documentation in R/recode_item.R
 \name{recode_item}
 \alias{recode_item}
-\title{Recode items of a dataframe (support reverse code)}
+\title{Re-code items of a dataframe (support reverse code)}
 \usage{
 recode_item(
   data,
@@ -16,7 +16,7 @@ recode_item(
 \arguments{
 \item{data}{a dataframe}
 
-\item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be recoded}
+\item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be re-coded}
 
 \item{code_from}{vector. the order must match with vector for code_to}
 
@@ -27,7 +27,7 @@ recode_item(
 \item{retain_code}{vector. the code to be retained. default is everything.}
 }
 \description{
-Recode items of a dataframe (support reverse code)
+Re-code items of a dataframe (support reverse code)
 }
 \examples{
 df1 = data.frame(x = 1:5)
