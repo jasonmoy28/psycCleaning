@@ -52,13 +52,10 @@ test_that("recode_item: only retain code", {
   ), ignore_attr = TRUE)
 })
 
-test_that("recode_item: warning", {
+test_that("recode_item: error", {
   test_df = data.frame(x = c(1, 2, 3, 4),
                        y = c(2, 4, 3, 1),
                        z = c(1, 2, 5, 6))
   
-  testthat::expect_warning(recoded_df = recode_item(data = test_df,
-                           cols = everything()))
-  
-  testthat::expect_equal(recoded_df, test_df)
+  testthat::expect_error({recoded_df = recode_item(data = test_df, cols = dplyr::everything())})
 })

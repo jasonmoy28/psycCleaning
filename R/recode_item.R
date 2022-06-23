@@ -19,6 +19,11 @@ recode_item <- function(data,
                         code_to = NULL,
                         reverse_code = FALSE,
                         retain_code = "all") {
+  
+  if (is.null(code_from) & reverse_code == FALSE & retain_code == 'all') {
+    stop()
+  }
+  
   cols = enquo(cols)
   data = data %>% dplyr::mutate(dplyr::across(!!cols,as.numeric))
 
@@ -45,9 +50,7 @@ recode_item <- function(data,
     # only code to NA 
     return_df = data %>%
       dplyr::mutate(dplyr::across(!!cols, ~ dplyr::if_else(. %in% retain_code, ., NA_real_)))
-  } else{
-    warnings('What are you doing? It will just return the same dataframe. Nothing happended')
-  }
+  } 
   return_df = return_df %>% data.table::as.data.table() %>% tibble::as_tibble()
   return(return_df)
 }
