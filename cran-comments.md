@@ -4,3 +4,5 @@
 
 * This is a new release.
 
+1. Description is updated as requested. 
+2. URLs are updated and passed the url check

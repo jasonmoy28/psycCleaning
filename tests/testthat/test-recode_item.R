@@ -1,6 +1,6 @@
 test_that("recode_item: standard usecase", {
   test_df = data.frame(id = c(1, 2, 3, 4, 5), x = c(1, 2, 3, 4, 999))
-  recoded_df = psycCleaning::recode_item(
+  recoded_df = recode_item(
     test_df,
     cols = x,
     reverse_code = TRUE,
