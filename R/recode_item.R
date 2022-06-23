@@ -37,18 +37,9 @@ recode_item <- function(data,
 
   } else if (!is.null(code_from)){
     # need to try to code it in a more generalizable way
-    return_df = data %>%
-      dplyr::mutate(dplyr::across(!!cols, ~ dplyr::case_when(
-        . == code_from[1] ~ code_to[1],
-        . == code_from[2] ~ code_to[2],
-        . == code_from[3] ~ code_to[3],
-        . == code_from[4] ~ code_to[4],
-        . == code_from[5] ~ code_to[5],
-        . == code_from[6] ~ code_to[6],
-        . == code_from[7] ~ code_to[7],
-        . == code_from[8] ~ code_to[8],
-        . == code_from[9] ~ code_to[9]
-      )))
+    names(code_to) = code_from
+    return_df = data %>% 
+      dplyr::mutate(dplyr::across(dplyr::everything(), function(lamda) {dplyr::recode(lamda,!!!code_to)}))
   } else if (!all(retain_code == 'all')){
     return_df = data %>%
       dplyr::mutate(dplyr::across(!!cols, ~ dplyr::if_else(. %in% retain_code, ., NA_real_)))
