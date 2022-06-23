@@ -23,6 +23,7 @@ recode_item <- function(data,
   data = data %>% dplyr::mutate(dplyr::across(!!cols,as.numeric))
 
   if (reverse_code == T) {
+    # reverse code
     if (all(retain_code == 'all')) {
       # if retain all code
       return_df = data %>%
@@ -36,11 +37,12 @@ recode_item <- function(data,
     }
 
   } else if (!is.null(code_from)){
-    # need to try to code it in a more generalizable way
+    # use code from and code to
     names(code_to) = code_from
     return_df = data %>% 
-      dplyr::mutate(dplyr::across(dplyr::everything(), function(lamda) {dplyr::recode(lamda,!!!code_to)}))
+      dplyr::mutate(dplyr::across(!!cols, function(lamda) {dplyr::recode(lamda,!!!code_to)}))
   } else if (!all(retain_code == 'all')){
+    # only code to NA 
     return_df = data %>%
       dplyr::mutate(dplyr::across(!!cols, ~ dplyr::if_else(. %in% retain_code, ., NA_real_)))
   } else{
