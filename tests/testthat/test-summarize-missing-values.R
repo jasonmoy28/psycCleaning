@@ -26,7 +26,7 @@ testthat::test_that('summarize_missing_values: with grouping', {
     col2 = c(1, NA, 3, 3, 5, 6),
     col3 = c(1, 2, NA, 6, 4, 3)
   )
-  summarized_df = summarize_missing_values(test_df, dplyr::everything(), group = col1)
+  summarized_df = summarize_missing_values(test_df, dplyr::everything(), group = col1,print = TRUE)
   testthat::expect_equal(summarized_df,
                          data.frame(
                            col1 = c('condition 1', 'condition 2'),
