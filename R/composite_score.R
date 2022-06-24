@@ -20,8 +20,8 @@ composite_score = function(data,
   
   composite_column = data %>%
     dplyr::select(!!enquo(cols)) %>%
-    rowSums() %>%
-    tibble::tibble(composite_column = .)
+    apply(., 1, function(x) {sum(x)/length(x)}) %>% 
+    data.frame(composite_column = .)
   
   return_df = data %>%
     dplyr::bind_cols(composite_column) %>%
