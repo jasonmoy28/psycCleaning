@@ -54,25 +54,20 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">listwise_deletion</span><span class="op">(</span><span class="va">data</span>, <span class="va">cols</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">listwise_deletion</span><span class="op">(</span><span class="va">data</span>, cols <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
-<dd><p>dataframe</p></dd>
+<dd><p>data frame</p></dd>
 
 
 <dt>cols</dt>
-<dd><p>vector or tidyselect syntax or helpers. column(s) that need to be centered</p></dd>
+<dd><p>vector or tidyselect syntax or helpers. column(s) that need to perform listwise deletion. Default is all columns (i.e., `dplyr::everything()`)
+return a data frame that has performed listwise deletion</p></dd>
 
 </dl></div>
-    <div id="value">
-    <h2>Value</h2>
-    
-
-<p>return a dataframe with listwise deletion</p>
-    </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
@@ -96,7 +91,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

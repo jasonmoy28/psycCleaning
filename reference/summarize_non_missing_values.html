@@ -58,33 +58,33 @@
   <span class="va">data</span>,
   cols <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">everything</a></span><span class="op">(</span><span class="op">)</span>,
   group <span class="op">=</span> <span class="cn">NULL</span>,
-  print <span class="op">=</span> <span class="cn">F</span>
+  print <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
-<dd><p>dataframe</p></dd>
+<dd><p>data frame.</p></dd>
 
 
 <dt>cols</dt>
-<dd><p>vector or tidyselect syntax or helpers. default is all columns</p></dd>
+<dd><p>vector or tidyselect syntax or helpers. default is all columns.</p></dd>
 
 
 <dt>group</dt>
-<dd><p>character. pass to group_by</p></dd>
+<dd><p>character. If specify, the return data frame would show the number of missing values of each column by group.</p></dd>
 
 
 <dt>print</dt>
-<dd><p>return the original data, and print the summary</p></dd>
+<dd><p>printing the return data frame.</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
     
 
-<p>return a dataframe with the number of non-NA values</p>
+<p>return a data frame with the number of non-NA values of each column.</p>
     </div>
 
     <div id="ref-examples">
@@ -112,7 +112,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
