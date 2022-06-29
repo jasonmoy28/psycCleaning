@@ -26,5 +26,5 @@ testthat::test_that('summarize missing value: grouping use case', {
                  col2 = c(1, 0),
                  col3 = c(1, 1)
                ),
-               ignore_attr = TRUERUERUERUE)
+               ignore_attr = TRUE)
 })
