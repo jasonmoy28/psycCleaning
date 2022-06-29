@@ -4,15 +4,13 @@
 \alias{listwise_deletion}
 \title{Listwise deletion}
 \usage{
-listwise_deletion(data, cols)
+listwise_deletion(data, cols = dplyr::everything())
 }
 \arguments{
-\item{data}{dataframe}
+\item{data}{data frame}
 
-\item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be centered}
-}
-\value{
-return a dataframe with listwise deletion
+\item{cols}{vector or tidyselect syntax or helpers. column(s) that need to perform listwise deletion. Default is all columns (i.e., `dplyr::everything()`)
+return a data frame that has performed listwise deletion}
 }
 \description{
 Perform listwise deletion (the entire rows is disregarded if the row has one NA value)

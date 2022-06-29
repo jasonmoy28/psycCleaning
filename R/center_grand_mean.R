@@ -14,6 +14,6 @@
 center_grand_mean = function(data, cols) {
   cols = enquo(cols)
   return_df = data %>%
-    dplyr::mutate(dplyr::across(!!cols, function(x) { (x - mean(x,na.rm = T))}))
+    dplyr::mutate(dplyr::across(!!cols, function(x) { (x - mean(x,na.rm = TRUE))}))
   return(return_df)
 }

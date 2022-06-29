@@ -1,24 +1,24 @@
-#' Count the number of missing / NA values
+#' Count the number of missing / `NA` values
 #'
-#' It counts the number of missing / NA values. You can pass everything() to cols in order to get all the missing value for all columns
+#' It counts the number of missing / `NA` values in each column.
 #'
-#' @param data dataframe
+#' @param data data frame.
 #' @param cols vector or tidyselect syntax or helpers. default is all columns
-#' @param group character. pass to group_by
-#' @param print return the original data, and print the summary
+#' @param group character. count missing values by group. 
+#' @param print printing the returned data frame.
 #'
 #' @return
-#' return a dataframe with the number of NA values
+#' return a data frame with the number of NA values of each columns 
 #' @export
 #'
 #' @examples
-#' test_df = data.frame(col1 = c(1,2,3),col2 = c(1,NA,3),col3 = c(1,2,NA))
-#' summarize_missing_values(test_df,everything())
+#' df1 = data.frame(col1 = c(1,2,3),col2 = c(1,NA,3),col3 = c(1,2,NA))
+#' summarize_missing_values(df1,everything())
 #'
 summarize_missing_values = function(data,
                                     cols = dplyr::everything(),
                                     group = NULL,
-                                    print = F) {
+                                    print = FALSE) {
   cols = dplyr::enquo(cols)
   group = dplyr::enquo(group)
   return_df = data %>%

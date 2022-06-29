@@ -7,17 +7,17 @@
 center_group_mean(data, cols, group)
 }
 \arguments{
-\item{data}{dataframe}
+\item{data}{data frame.}
 
 \item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be centered.  Recommend using where(is.numeric) to exclude changing factors.}
 
-\item{group}{the grouping variable. If you need to pass multiple group variables, try to use quos(). Passing multiple group variables is not tested.}
+\item{group}{character. grouping variable}
 }
 \value{
-return a dataframe with the columns centered (replace existing columns)
+return a data frame with the columns centered (replace existing columns)
 }
 \description{
-Center all columns with respect to the group mean. Currently, it will drop the group column (Will try to fix this in the next version)
+Center all columns with respect to the group mean.
 }
 \examples{
 center_group_mean(iris,where(is.numeric), group = Species)

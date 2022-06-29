@@ -1,14 +1,12 @@
 #' Center with respect to group mean
 #'
-#' Center all columns with respect to the group mean. Currently, it will drop the group column (Will try to fix this in the next version)
-#'
-#' @param data dataframe
+#' Center all columns with respect to the group mean. 
+#' @param data data frame. 
 #' @param cols vector or tidyselect syntax or helpers. column(s) that need to be centered.  Recommend using where(is.numeric) to exclude changing factors.
-#' @param group the grouping variable. If you need to pass multiple group variables, try to use quos(). Passing multiple group variables is not tested.
-#'
+#' @param group character. grouping variable
 #'
 #' @return
-#' return a dataframe with the columns centered (replace existing columns)
+#' return a data frame with the columns centered (replace existing columns)
 #' @export
 #'
 #' @examples
@@ -20,7 +18,7 @@ center_group_mean = function(data, cols, group){
   group = enquo(group)
   return_df = data %>%
     dplyr::group_by(dplyr::across(!!group)) %>%
-    dplyr::mutate(dplyr::across(!!cols, function(x) { (x - mean(x,na.rm = T))})) %>%
+    dplyr::mutate(dplyr::across(!!cols, function(x) { (x - mean(x,na.rm = TRUE))})) %>%
     dplyr::ungroup()
   return(return_df)
 }

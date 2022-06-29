@@ -18,7 +18,7 @@ z_scored_group_mean = function(data, cols, group) {
   group = enquo(group)
   return_df = data %>%
     dplyr::group_by(dplyr::across(!!group)) %>%
-    dplyr::mutate(dplyr::across(!!cols, function(x) { (x - mean(x,na.rm = T))/stats::sd(x,na.rm = T)})) %>%
+    dplyr::mutate(dplyr::across(!!cols, function(x) { (x - mean(x,na.rm = TRUE))/stats::sd(x,na.rm = TRUE)})) %>%
     dplyr::ungroup()
   return(return_df)
 }

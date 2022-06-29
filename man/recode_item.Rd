@@ -2,7 +2,7 @@
 % Please edit documentation in R/recode_item.R
 \name{recode_item}
 \alias{recode_item}
-\title{Re-code items of a dataframe (support reverse code)}
+\title{Re-code values of a data frame (support reverse code)}
 \usage{
 recode_item(
   data,
@@ -10,27 +10,31 @@ recode_item(
   code_from = NULL,
   code_to = NULL,
   reverse_code = FALSE,
-  retain_code = "all"
+  retain_code = NULL
 )
 }
 \arguments{
-\item{data}{a dataframe}
+\item{data}{a data frame}
 
 \item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be re-coded}
 
-\item{code_from}{vector. the order must match with vector for code_to}
+\item{code_from}{vector. the order must match with vector for `code_to`}
 
-\item{code_to}{vector. the order must match with vector for code_from}
+\item{code_to}{vector. the order must match with vector for `code_from`}
 
-\item{reverse_code}{logical. Default as F. If T, it will use psych::reverse_code}
+\item{reverse_code}{logical. Default as `FALSE`. If `TRUE`, it will reverse code the value of that column.}
 
-\item{retain_code}{vector. the code to be retained. default is everything.}
+\item{retain_code}{vector. Specify the values to be retain}
+}
+\value{
+return a data frame  with values that has been recoded
 }
 \description{
-Re-code items of a dataframe (support reverse code)
+Re-code values of a data frame (support reverse code)
 }
 \examples{
-df1 = data.frame(x = 1:5)
-recode_item(df1, cols = x, reverse_code = TRUE)
+pre_recoded_df = tibble::tibble(x1 = 1:5, x2 = 5:1, x3 = 6:10, y = 1:5)
+recoded_df = recode_item(pre_recoded_df, cols = dplyr::contains('x'), reverse_code = TRUE)
+list(pre_recoded_df = pre_recoded_df,recoded_df = recoded_df)
 
 }

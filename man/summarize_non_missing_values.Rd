@@ -8,20 +8,20 @@ summarize_non_missing_values(
   data,
   cols = dplyr::everything(),
   group = NULL,
-  print = F
+  print = FALSE
 )
 }
 \arguments{
-\item{data}{dataframe}
+\item{data}{data frame.}
 
-\item{cols}{vector or tidyselect syntax or helpers. default is all columns}
+\item{cols}{vector or tidyselect syntax or helpers. default is all columns.}
 
-\item{group}{character. pass to group_by}
+\item{group}{character. If specify, the return data frame would show the number of missing values of each column by group.}
 
-\item{print}{return the original data, and print the summary}
+\item{print}{printing the return data frame.}
 }
 \value{
-return a dataframe with the number of non-NA values
+return a data frame with the number of non-NA values of each column.
 }
 \description{
 It counts the number of non-missing / non-NA values. You can pass everything() to cols in order to get all the missing value for all columns
