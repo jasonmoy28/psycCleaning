@@ -8,7 +8,8 @@ summarize_missing_values(
   data,
   cols = dplyr::everything(),
   group = NULL,
-  print = FALSE
+  verbose = TRUE,
+  return_result = FALSE
 )
 }
 \arguments{
@@ -18,10 +19,12 @@ summarize_missing_values(
 
 \item{group}{character. count missing values by group.}
 
-\item{print}{printing the returned data frame.}
+\item{verbose}{default is `TRUE`. Print the missing value data frame}
+
+\item{return_result}{default is `FALSE`. Return `data_frame` if set to yes}
 }
 \value{
-return a data frame with the number of NA values of each columns
+return a data frame with the number of NA values of each columns if `return_result = TRUE`
 }
 \description{
 It counts the number of missing / `NA` values in each column.
