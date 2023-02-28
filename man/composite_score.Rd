@@ -7,6 +7,7 @@
 composite_score(
   data,
   cols = tidyselect::everything(),
+  na.rm = FALSE,
   composite_col_name = "composited_column"
 )
 }

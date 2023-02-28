@@ -16,11 +16,12 @@
 #'
 composite_score = function(data,
                            cols = tidyselect::everything(),
+                           na.rm = FALSE,
                            composite_col_name = 'composited_column') {
   
   composite_column = data %>%
     dplyr::select(!!enquo(cols)) %>%
-    apply(., 1, function(x) {sum(x)/length(x)}) %>% 
+    apply(., 1, function(x) {mean(x,na.rm = na.rm)}) %>% 
     data.frame(composite_column = .)
   
   return_df = data %>%
