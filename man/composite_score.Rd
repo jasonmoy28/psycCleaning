@@ -16,6 +16,8 @@ composite_score(
 
 \item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be composite}
 
+\item{na.rm}{ignore NA}
+
 \item{composite_col_name}{character. default as 'composite_column'. the column name of the composite column}
 }
 \value{

@@ -1,9 +1,11 @@
 #' Composite column
 #'
 #' The function will perform a rowise aggregation which then divided by the total number of columns. It ignores rows with any NA value (i.e, will use listwise deletion)
+#'
 #' @param data dataframe
 #' @param cols vector or tidyselect syntax or helpers. column(s) that need to be composite
 #' @param composite_col_name character. default as 'composite_column'. the column name of the composite column
+#' @param na.rm ignore NA
 #'
 #' @return
 #' return a dataframe with a new column with the composite score

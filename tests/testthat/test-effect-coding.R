@@ -8,8 +8,13 @@ testthat::test_that('Effect coding',{
   model_summary = lm(data = new_test_df, c ~ a) %>% summary()
   model_summary$coefficients
   
-  test_df$a1 = car::recode(test_df$a,'1=1;2=0;3=-1')
-  test_df$a2 = car::recode(test_df$a,'1=0;2=1;3=-1')
+  test_df = test_df %>%  
+    dplyr::mutate(a1 = dplyr::case_when(a == 1 ~ 1,
+                                        a == 2 ~ 0,
+                                        a == 3 ~ -1)) %>% 
+    dplyr::mutate(a2 = dplyr::case_when(a == 1 ~ 0,
+                                        a == 2 ~ 1,
+                                        a == 3 ~ -1)) 
   model_summary_2 = lm(data = test_df, c ~ a1 + a2) %>% summary()
   model_summary_2$coefficients
   
