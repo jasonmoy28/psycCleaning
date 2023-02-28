@@ -1,30 +1,30 @@
-testthat::test_that('summarize missing value: standard use case', {
+testthat::test_that('summarize_missing_values: no group',{
   test_df = data.frame(
-    col1 = c(1, 2, 10),
-    col2 = c(1, NA, 3),
-    col3 = c(1, NA, NA),
-    y = c(NA, NA, NA)
+    a = c(1,3,5,7,NA,4,2,NA,4,3,NA),
+    b = c(1,NA,5,7,NA,4,NA,NA,4,3,NA),
+    c = c(1,3,5,7,NA,3,2,4,4,4,3),
+    d = c(NA,3,5,7,NA,3,2,4,NA,NA,3)
   )
-  summarized_df = summarize_missing_values(test_df, cols = dplyr::contains('col'))
-  expect_equal(c(summarized_df[, 2]), list(value = c(0, 1, 2)))
+  
+  missing_value_summary = summarize_missing_values(test_df,
+                                                   cols = a:d,
+                                                   return_result = T,
+                                                   verbose = F)
+  
+  testthat::expect_equal(missing_value_summary$miss_count, c(3,5,1,4))
+  testthat::expect_equal(missing_value_summary$non_miss_count,c(8,6,10,7))
 })
 
-testthat::test_that('summarize missing value: grouping use case', {
-  test_df = data.frame(
-    col1 = c(1, 2, 10, 5),
-    col2 = c(1, NA, 3, 4),
-    col3 = c(1, NA, NA, 1),
-    condition = c(1, 1, 2, 2)
-  )
-  summarized_df = summarize_missing_values(test_df,
-                                           cols = dplyr::contains('col'),
-                                           group = condition)
-  expect_equal(summarized_df,
-               data.frame(
-                 condition = c(1, 2),
-                 col1 = c(0, 0),
-                 col2 = c(1, 0),
-                 col3 = c(1, 1)
-               ),
-               ignore_attr = TRUE)
+testthat::test_that('summarize_missing_values: with group',{
+test_df = data.frame(
+  condition = c(1,1,1,3,3,3,5,5,5,5,5),
+  a = c(1,3,5,7,NA,4,2,NA,4,3,NA),
+  b = c(1,NA,5,7,NA,4,NA,NA,4,3,NA),
+  c = c(1,3,5,7,NA,3,2,4,4,4,3),
+  d = c(NA,3,5,7,NA,3,2,4,NA,NA,3)
+)
+
+missing_summary = summarize_missing_values(test_df,cols = a:d,group = condition,return_result = T,verbose = F)
+testthat::expect_equal(missing_summary$miss_count, c(0,1,0,1,1,1,1,1,2,3,0,2))
+testthat::expect_equal(missing_summary$non_miss_count, c(3,2,3,2,2,2,2,2,3,2,5,3))
 })
