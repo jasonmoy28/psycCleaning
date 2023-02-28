@@ -4,14 +4,7 @@
 \alias{recode_item}
 \title{Re-code values of a data frame (support reverse code)}
 \usage{
-recode_item(
-  data,
-  cols,
-  code_from = NULL,
-  code_to = NULL,
-  reverse_code = FALSE,
-  retain_code = NULL
-)
+recode_item(data, cols, code_from = NULL, code_to = NULL, retain_code = NULL)
 }
 \arguments{
 \item{data}{a data frame}
@@ -22,8 +15,6 @@ recode_item(
 
 \item{code_to}{vector. the order must match with vector for `code_from`}
 
-\item{reverse_code}{logical. Default as `FALSE`. If `TRUE`, it will reverse code the value of that column.}
-
 \item{retain_code}{vector. Specify the values to be retain}
 }
 \value{
@@ -33,8 +24,9 @@ return a data frame  with values that has been recoded
 Re-code values of a data frame (support reverse code)
 }
 \examples{
-pre_recoded_df = tibble::tibble(x1 = 1:5, x2 = 5:1, x3 = 6:10, y = 1:5)
-recoded_df = recode_item(pre_recoded_df, cols = dplyr::contains('x'), reverse_code = TRUE)
-list(pre_recoded_df = pre_recoded_df,recoded_df = recoded_df)
+pre_recoded_df = tibble::tibble(x1 = 1:5, x2 = 5:1)
+recoded_df = recode_item(pre_recoded_df, cols = dplyr::contains('x'),
+                        code_from = 1:5,
+                        code_to = 5:1)
 
 }
