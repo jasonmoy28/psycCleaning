@@ -57,6 +57,7 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">composite_score</span><span class="op">(</span></span>
 <span>  <span class="va">data</span>,</span>
 <span>  cols <span class="op">=</span> <span class="fu">tidyselect</span><span class="fu">::</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html" class="external-link">everything</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  na.rm <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  composite_col_name <span class="op">=</span> <span class="st">"composited_column"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -69,6 +70,10 @@
 
 <dt>cols</dt>
 <dd><p>vector or tidyselect syntax or helpers. column(s) that need to be composite</p></dd>
+
+
+<dt>na.rm</dt>
+<dd><p>ignore NA</p></dd>
 
 
 <dt>composite_col_name</dt>
@@ -102,7 +107,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

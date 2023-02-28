@@ -25,6 +25,9 @@
     <loc>https://jasonmoy28.github.io/psycCleaning/reference/composite_score.html</loc>
   </url>
   <url>
+    <loc>https://jasonmoy28.github.io/psycCleaning/reference/effect_coding.html</loc>
+  </url>
+  <url>
     <loc>https://jasonmoy28.github.io/psycCleaning/reference/index.html</loc>
   </url>
   <url>
@@ -38,9 +41,6 @@
   </url>
   <url>
     <loc>https://jasonmoy28.github.io/psycCleaning/reference/summarize_missing_values.html</loc>
-  </url>
-  <url>
-    <loc>https://jasonmoy28.github.io/psycCleaning/reference/summarize_non_missing_values.html</loc>
   </url>
   <url>
     <loc>https://jasonmoy28.github.io/psycCleaning/reference/tidyeval.html</loc>
