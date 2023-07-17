@@ -4,7 +4,7 @@
 \alias{z_scored_group_mean}
 \title{Z scored with with respect to the group mean}
 \usage{
-z_scored_group_mean(data, cols, group)
+z_scored_group_mean(data, cols, group, keep_original = TRUE)
 }
 \arguments{
 \item{data}{dataframe}

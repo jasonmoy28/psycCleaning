@@ -13,13 +13,18 @@
 #' z_scored_group_mean(iris, where(is.numeric), group = Species)
 #' z_scored_group_mean(iris, 1:4, group = Species)
 #'
-z_scored_group_mean = function(data, cols, group) {
+z_scored_group_mean = function(data,cols,group,keep_original=TRUE) {
   cols = enquo(cols)
   group = enquo(group)
+  original_df = data %>% select(!!cols)
+  
   return_df = data %>%
     dplyr::group_by(dplyr::across(!!group)) %>%
-    dplyr::mutate(dplyr::across(!!cols, function(x) { (x - mean(x,na.rm = TRUE))/stats::sd(x,na.rm = TRUE)})) %>%
+    dplyr::mutate(dplyr::across(!!cols, function(x) { (x - mean(x,na.rm = TRUE))/stats::sd(x,na.rm = TRUE)})) %>% 
+    dplyr::rename_with(~ paste(.,'_z',sep = ''),!!cols) %>% 
     dplyr::ungroup()
+  if (keep_original == TRUE) {
+    return_df = bind_cols(return_df,original_df)
+  }
   return(return_df)
 }
-

@@ -4,7 +4,7 @@
 \alias{center_group_mean}
 \title{Center with respect to group mean}
 \usage{
-center_group_mean(data, cols, group)
+center_group_mean(data, cols, group, keep_original = TRUE)
 }
 \arguments{
 \item{data}{data frame.}

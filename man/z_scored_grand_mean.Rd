@@ -4,12 +4,14 @@
 \alias{z_scored_grand_mean}
 \title{Z scored with with respect to the grand mean}
 \usage{
-z_scored_grand_mean(data, cols)
+z_scored_grand_mean(data, cols, keep_original = TRUE)
 }
 \arguments{
 \item{data}{dataframe}
 
 \item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be centered}
+
+\item{keep_original}{default is `FALSE`. Set to `TRUE` to keep original columns}
 }
 \value{
 return a dataframe with the columns z-scored (replace existing columns)
