@@ -12,6 +12,8 @@ z_scored_group_mean(data, cols, group, keep_original = TRUE)
 \item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be centered}
 
 \item{group}{the grouping variable. If you need to pass multiple group variables, try to use quos(). Passing multiple group variables is not tested.}
+
+\item{keep_original}{default is `FALSE`. Set to `TRUE` to keep original columns}
 }
 \value{
 return a dataframe with the columns z-scored (replace existing columns)

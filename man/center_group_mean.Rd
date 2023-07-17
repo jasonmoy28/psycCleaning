@@ -12,6 +12,8 @@ center_group_mean(data, cols, group, keep_original = TRUE)
 \item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be centered.  Recommend using where(is.numeric) to exclude changing factors.}
 
 \item{group}{character. grouping variable}
+
+\item{keep_original}{default is `FALSE`. Set to `TRUE` to keep original columns}
 }
 \value{
 return a data frame with the columns centered (replace existing columns)
