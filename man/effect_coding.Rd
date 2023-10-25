@@ -4,12 +4,14 @@
 \alias{effect_coding}
 \title{Effect Coding}
 \usage{
-effect_coding(data, cols)
+effect_coding(data, cols, factor = TRUE)
 }
 \arguments{
 \item{data}{data.frame object}
 
 \item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be re-coded}
+
+\item{factor}{If factor = `TRUE`, this function return a `tibble` with effect coded factors. If factor = `FALSE`, this function return a tibble with effect coded columns.}
 }
 \value{
 return a data.frame with factors being effect coded
