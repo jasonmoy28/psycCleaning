@@ -22,7 +22,13 @@
     <loc>https://jasonmoy28.github.io/psycCleaning/reference/center_group_mean.html</loc>
   </url>
   <url>
+    <loc>https://jasonmoy28.github.io/psycCleaning/reference/center_mlm.html</loc>
+  </url>
+  <url>
     <loc>https://jasonmoy28.github.io/psycCleaning/reference/composite_score.html</loc>
+  </url>
+  <url>
+    <loc>https://jasonmoy28.github.io/psycCleaning/reference/dummy_coding.html</loc>
   </url>
   <url>
     <loc>https://jasonmoy28.github.io/psycCleaning/reference/effect_coding.html</loc>
@@ -50,5 +56,11 @@
   </url>
   <url>
     <loc>https://jasonmoy28.github.io/psycCleaning/reference/z_scored_group_mean.html</loc>
+  </url>
+  <url>
+    <loc>https://jasonmoy28.github.io/psycCleaning/reference/z_scored_mlm.html</loc>
+  </url>
+  <url>
+    <loc>https://jasonmoy28.github.io/psycCleaning/reference/z_scored_mlm_categorical.html</loc>
   </url>
 </urlset>

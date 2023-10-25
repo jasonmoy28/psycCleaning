@@ -54,7 +54,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">center_group_mean</span><span class="op">(</span><span class="va">data</span>, <span class="va">cols</span>, <span class="va">group</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">center_group_mean</span><span class="op">(</span><span class="va">data</span>, <span class="va">cols</span>, <span class="va">group</span>, keep_original <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -70,6 +70,10 @@
 <dt>group</dt>
 <dd><p>character. grouping variable</p></dd>
 
+
+<dt>keep_original</dt>
+<dd><p>default is `FALSE`. Set to `TRUE` to keep original columns</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -81,20 +85,23 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">center_group_mean</span><span class="op">(</span><span class="va">iris</span>,<span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, group <span class="op">=</span> <span class="va">Species</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 150 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>      0.094<span style="text-decoration: underline;">0</span>       0.072<span style="text-decoration: underline;">0</span>      -<span style="color: #BB0000;">0.062</span><span style="color: #BB0000; text-decoration: underline;">0</span>      -<span style="color: #BB0000;">0.046</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     -<span style="color: #BB0000;">0.106</span>       -<span style="color: #BB0000;">0.428</span>       -<span style="color: #BB0000;">0.062</span><span style="color: #BB0000; text-decoration: underline;">0</span>      -<span style="color: #BB0000;">0.046</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     -<span style="color: #BB0000;">0.306</span>       -<span style="color: #BB0000;">0.228</span>       -<span style="color: #BB0000;">0.162</span>       -<span style="color: #BB0000;">0.046</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     -<span style="color: #BB0000;">0.406</span>       -<span style="color: #BB0000;">0.328</span>        0.038<span style="text-decoration: underline;">0</span>      -<span style="color: #BB0000;">0.046</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     -<span style="color: #BB0000;">0.006</span><span style="color: #BB0000; text-decoration: underline;">00</span>      0.172       -<span style="color: #BB0000;">0.062</span><span style="color: #BB0000; text-decoration: underline;">0</span>      -<span style="color: #BB0000;">0.046</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>      0.394        0.472        0.238        0.154 setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     -<span style="color: #BB0000;">0.406</span>       -<span style="color: #BB0000;">0.028</span><span style="color: #BB0000; text-decoration: underline;">0</span>      -<span style="color: #BB0000;">0.062</span><span style="color: #BB0000; text-decoration: underline;">0</span>       0.054 setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     -<span style="color: #BB0000;">0.006</span><span style="color: #BB0000; text-decoration: underline;">00</span>     -<span style="color: #BB0000;">0.028</span><span style="color: #BB0000; text-decoration: underline;">0</span>       0.038<span style="text-decoration: underline;">0</span>      -<span style="color: #BB0000;">0.046</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     -<span style="color: #BB0000;">0.606</span>       -<span style="color: #BB0000;">0.528</span>       -<span style="color: #BB0000;">0.062</span><span style="color: #BB0000; text-decoration: underline;">0</span>      -<span style="color: #BB0000;">0.046</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     -<span style="color: #BB0000;">0.106</span>       -<span style="color: #BB0000;">0.328</span>        0.038<span style="text-decoration: underline;">0</span>      -<span style="color: #BB0000;">0.146</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 140 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 150 × 9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Sepal.Length_group_c Sepal.Width_group_c Petal.Length_group_c</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>              0.094<span style="text-decoration: underline;">0</span>               0.072<span style="text-decoration: underline;">0</span>              -<span style="color: #BB0000;">0.062</span><span style="color: #BB0000; text-decoration: underline;">0</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>             -<span style="color: #BB0000;">0.106</span>               -<span style="color: #BB0000;">0.428</span>               -<span style="color: #BB0000;">0.062</span><span style="color: #BB0000; text-decoration: underline;">0</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>             -<span style="color: #BB0000;">0.306</span>               -<span style="color: #BB0000;">0.228</span>               -<span style="color: #BB0000;">0.162</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>             -<span style="color: #BB0000;">0.406</span>               -<span style="color: #BB0000;">0.328</span>                0.038<span style="text-decoration: underline;">0</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>             -<span style="color: #BB0000;">0.006</span><span style="color: #BB0000; text-decoration: underline;">00</span>              0.172               -<span style="color: #BB0000;">0.062</span><span style="color: #BB0000; text-decoration: underline;">0</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>              0.394                0.472                0.238 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>             -<span style="color: #BB0000;">0.406</span>               -<span style="color: #BB0000;">0.028</span><span style="color: #BB0000; text-decoration: underline;">0</span>              -<span style="color: #BB0000;">0.062</span><span style="color: #BB0000; text-decoration: underline;">0</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>             -<span style="color: #BB0000;">0.006</span><span style="color: #BB0000; text-decoration: underline;">00</span>             -<span style="color: #BB0000;">0.028</span><span style="color: #BB0000; text-decoration: underline;">0</span>               0.038<span style="text-decoration: underline;">0</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>             -<span style="color: #BB0000;">0.606</span>               -<span style="color: #BB0000;">0.528</span>               -<span style="color: #BB0000;">0.062</span><span style="color: #BB0000; text-decoration: underline;">0</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>             -<span style="color: #BB0000;">0.106</span>               -<span style="color: #BB0000;">0.328</span>                0.038<span style="text-decoration: underline;">0</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 140 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: Petal.Width_group_c &lt;dbl&gt;, Species &lt;fct&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Sepal.Length &lt;dbl&gt;, Sepal.Width &lt;dbl&gt;, Petal.Length &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Petal.Width &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

@@ -54,7 +54,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">z_scored_group_mean</span><span class="op">(</span><span class="va">data</span>, <span class="va">cols</span>, <span class="va">group</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">z_scored_group_mean</span><span class="op">(</span><span class="va">data</span>, <span class="va">cols</span>, <span class="va">group</span>, keep_original <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -70,6 +70,10 @@
 <dt>group</dt>
 <dd><p>the grouping variable. If you need to pass multiple group variables, try to use quos(). Passing multiple group variables is not tested.</p></dd>
 
+
+<dt>keep_original</dt>
+<dd><p>default is `FALSE`. Set to `TRUE` to keep original columns</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -81,35 +85,41 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">z_scored_group_mean</span><span class="op">(</span><span class="va">iris</span>, <span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, group <span class="op">=</span> <span class="va">Species</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 150 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>       0.267       0.190        -<span style="color: #BB0000;">0.357</span>      -<span style="color: #BB0000;">0.436</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>      -<span style="color: #BB0000;">0.301</span>      -<span style="color: #BB0000;">1.13</span>         -<span style="color: #BB0000;">0.357</span>      -<span style="color: #BB0000;">0.436</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>      -<span style="color: #BB0000;">0.868</span>      -<span style="color: #BB0000;">0.601</span>        -<span style="color: #BB0000;">0.933</span>      -<span style="color: #BB0000;">0.436</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>      -<span style="color: #BB0000;">1.15</span>       -<span style="color: #BB0000;">0.865</span>         0.219      -<span style="color: #BB0000;">0.436</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>      -<span style="color: #BB0000;">0.017</span><span style="color: #BB0000; text-decoration: underline;">0</span>      0.454        -<span style="color: #BB0000;">0.357</span>      -<span style="color: #BB0000;">0.436</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>       1.12        1.25          1.37        1.46  setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>      -<span style="color: #BB0000;">1.15</span>       -<span style="color: #BB0000;">0.073</span><span style="color: #BB0000; text-decoration: underline;">9</span>       -<span style="color: #BB0000;">0.357</span>       0.512 setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>      -<span style="color: #BB0000;">0.017</span><span style="color: #BB0000; text-decoration: underline;">0</span>     -<span style="color: #BB0000;">0.073</span><span style="color: #BB0000; text-decoration: underline;">9</span>        0.219      -<span style="color: #BB0000;">0.436</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>      -<span style="color: #BB0000;">1.72</span>       -<span style="color: #BB0000;">1.39</span>         -<span style="color: #BB0000;">0.357</span>      -<span style="color: #BB0000;">0.436</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>      -<span style="color: #BB0000;">0.301</span>      -<span style="color: #BB0000;">0.865</span>         0.219      -<span style="color: #BB0000;">1.39</span>  setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 140 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 150 × 9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Sepal.Length_group_z Sepal.Width_group_z Petal.Length_group_z</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>               0.267               0.190                -<span style="color: #BB0000;">0.357</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>              -<span style="color: #BB0000;">0.301</span>              -<span style="color: #BB0000;">1.13</span>                 -<span style="color: #BB0000;">0.357</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>              -<span style="color: #BB0000;">0.868</span>              -<span style="color: #BB0000;">0.601</span>                -<span style="color: #BB0000;">0.933</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>              -<span style="color: #BB0000;">1.15</span>               -<span style="color: #BB0000;">0.865</span>                 0.219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>              -<span style="color: #BB0000;">0.017</span><span style="color: #BB0000; text-decoration: underline;">0</span>              0.454                -<span style="color: #BB0000;">0.357</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>               1.12                1.25                  1.37 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>              -<span style="color: #BB0000;">1.15</span>               -<span style="color: #BB0000;">0.073</span><span style="color: #BB0000; text-decoration: underline;">9</span>               -<span style="color: #BB0000;">0.357</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>              -<span style="color: #BB0000;">0.017</span><span style="color: #BB0000; text-decoration: underline;">0</span>             -<span style="color: #BB0000;">0.073</span><span style="color: #BB0000; text-decoration: underline;">9</span>                0.219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>              -<span style="color: #BB0000;">1.72</span>               -<span style="color: #BB0000;">1.39</span>                 -<span style="color: #BB0000;">0.357</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>              -<span style="color: #BB0000;">0.301</span>              -<span style="color: #BB0000;">0.865</span>                 0.219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 140 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: Petal.Width_group_z &lt;dbl&gt;, Species &lt;fct&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Sepal.Length &lt;dbl&gt;, Sepal.Width &lt;dbl&gt;, Petal.Length &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Petal.Width &lt;dbl&gt;</span></span>
 <span class="r-in"><span><span class="fu">z_scored_group_mean</span><span class="op">(</span><span class="va">iris</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, group <span class="op">=</span> <span class="va">Species</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 150 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>       0.267       0.190        -<span style="color: #BB0000;">0.357</span>      -<span style="color: #BB0000;">0.436</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>      -<span style="color: #BB0000;">0.301</span>      -<span style="color: #BB0000;">1.13</span>         -<span style="color: #BB0000;">0.357</span>      -<span style="color: #BB0000;">0.436</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>      -<span style="color: #BB0000;">0.868</span>      -<span style="color: #BB0000;">0.601</span>        -<span style="color: #BB0000;">0.933</span>      -<span style="color: #BB0000;">0.436</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>      -<span style="color: #BB0000;">1.15</span>       -<span style="color: #BB0000;">0.865</span>         0.219      -<span style="color: #BB0000;">0.436</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>      -<span style="color: #BB0000;">0.017</span><span style="color: #BB0000; text-decoration: underline;">0</span>      0.454        -<span style="color: #BB0000;">0.357</span>      -<span style="color: #BB0000;">0.436</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>       1.12        1.25          1.37        1.46  setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>      -<span style="color: #BB0000;">1.15</span>       -<span style="color: #BB0000;">0.073</span><span style="color: #BB0000; text-decoration: underline;">9</span>       -<span style="color: #BB0000;">0.357</span>       0.512 setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>      -<span style="color: #BB0000;">0.017</span><span style="color: #BB0000; text-decoration: underline;">0</span>     -<span style="color: #BB0000;">0.073</span><span style="color: #BB0000; text-decoration: underline;">9</span>        0.219      -<span style="color: #BB0000;">0.436</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>      -<span style="color: #BB0000;">1.72</span>       -<span style="color: #BB0000;">1.39</span>         -<span style="color: #BB0000;">0.357</span>      -<span style="color: #BB0000;">0.436</span> setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>      -<span style="color: #BB0000;">0.301</span>      -<span style="color: #BB0000;">0.865</span>         0.219      -<span style="color: #BB0000;">1.39</span>  setosa </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 140 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 150 × 9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Sepal.Length_group_z Sepal.Width_group_z Petal.Length_group_z</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>               0.267               0.190                -<span style="color: #BB0000;">0.357</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>              -<span style="color: #BB0000;">0.301</span>              -<span style="color: #BB0000;">1.13</span>                 -<span style="color: #BB0000;">0.357</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>              -<span style="color: #BB0000;">0.868</span>              -<span style="color: #BB0000;">0.601</span>                -<span style="color: #BB0000;">0.933</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>              -<span style="color: #BB0000;">1.15</span>               -<span style="color: #BB0000;">0.865</span>                 0.219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>              -<span style="color: #BB0000;">0.017</span><span style="color: #BB0000; text-decoration: underline;">0</span>              0.454                -<span style="color: #BB0000;">0.357</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>               1.12                1.25                  1.37 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>              -<span style="color: #BB0000;">1.15</span>               -<span style="color: #BB0000;">0.073</span><span style="color: #BB0000; text-decoration: underline;">9</span>               -<span style="color: #BB0000;">0.357</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>              -<span style="color: #BB0000;">0.017</span><span style="color: #BB0000; text-decoration: underline;">0</span>             -<span style="color: #BB0000;">0.073</span><span style="color: #BB0000; text-decoration: underline;">9</span>                0.219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>              -<span style="color: #BB0000;">1.72</span>               -<span style="color: #BB0000;">1.39</span>                 -<span style="color: #BB0000;">0.357</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>              -<span style="color: #BB0000;">0.301</span>              -<span style="color: #BB0000;">0.865</span>                 0.219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 140 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: Petal.Width_group_z &lt;dbl&gt;, Species &lt;fct&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Sepal.Length &lt;dbl&gt;, Sepal.Width &lt;dbl&gt;, Petal.Length &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Petal.Width &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
