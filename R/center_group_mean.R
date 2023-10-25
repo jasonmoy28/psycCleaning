@@ -21,7 +21,7 @@ center_group_mean = function(data,cols,group,keep_original=TRUE){
   return_df = data %>%
     dplyr::group_by(dplyr::across(!!group)) %>%
     dplyr::mutate(dplyr::across(!!cols, function(x) { (x - mean(x,na.rm = TRUE))})) %>% 
-    dplyr::rename_with(~ paste(.,'_c',sep = ''),!!cols) %>% 
+    dplyr::rename_with(~ paste(.,'_group_c',sep = ''),!!cols) %>% 
     dplyr::ungroup()
   if (keep_original == TRUE) {
     return_df = dplyr::bind_cols(return_df,original_df)
