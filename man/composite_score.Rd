@@ -6,7 +6,7 @@
 \usage{
 composite_score(
   data,
-  cols = tidyselect::everything(),
+  cols = dplyr::everything(),
   na.rm = FALSE,
   composite_col_name = "composited_column"
 )
