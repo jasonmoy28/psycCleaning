@@ -14,17 +14,12 @@ dummy_coding(data, cols)
 }
 \value{
 return a data.frame with factors being dummy coded
-
-return a data.frame with factors being effect coded
 }
 \description{
 Dummy Coding
 Create dummy coding columns
 }
 \examples{
-effect_coding(iris,Species)
-Dummy Coding
-
 dummy_coding(iris,Species)
 
 }

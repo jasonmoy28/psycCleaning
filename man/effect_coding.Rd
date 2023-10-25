@@ -21,4 +21,5 @@ Effect Coding
 }
 \examples{
 effect_coding(iris,Species)
+
 }

@@ -2,17 +2,19 @@
 #' It will group mean center and z-scored the L1 score and create a mean score for each L2 group.
 #' 
 #' @param data dataframe
-#' @param cols vector or tidyselect syntax or helpers. column(s) that need to be centered
+#' @param effect_coded effect coded variables for L1 group-mean centering
+#' @param dummy_coded dummy-coded variables for L2 aggregated means
 #' @param group the grouping variable. Must be character
 #' @param keep_original default is `FALSE`. Set to `TRUE` to keep original columns
-
+#'
 #' @return
 #' return a dataframe with the columns z-scored (replace existing columns)
 #' @export
-#'
+#' 
 #' @examples
-#' z_scored_mlm(iris,ends_with('Length'),group = 'Species')
-#'
+#' iris %>% dplyr::mutate(cluster = rep(c(1,2,3),nrow(.)/3)) %>% effect_coding('Species',factor = FALSE) %>% dummy_coding('Species') %>% z_scored_mlm_categorical(effect_coded = dplyr::ends_with('eff'),dummy_coded = dplyr::ends_with('dum'),group = 'cluster')
+
+
 z_scored_mlm_categorical = function(data,effect_coded,dummy_coded,group,keep_original = TRUE){
   data_names = names(data)
   effect_coded = data %>% dplyr::select(!!enquo(effect_coded)) %>% names()
@@ -22,7 +24,7 @@ z_scored_mlm_categorical = function(data,effect_coded,dummy_coded,group,keep_ori
   
   # group mean
   mean_data = data %>%
-    dplyr::group_by(across(!!group)) %>% 
+    dplyr::group_by(dplyr::across(!!group)) %>% 
     dplyr::summarise(dplyr::across(!!dummy_coded,~mean(.,na.rm = T))) %>%
     dplyr::mutate(dplyr::across(!!dummy_coded, function(x) { (x - mean(x,na.rm = TRUE))/stats::sd(x,na.rm = TRUE)})) %>% 
     dplyr::ungroup() %>% 
@@ -41,7 +43,7 @@ z_scored_mlm_categorical = function(data,effect_coded,dummy_coded,group,keep_ori
   }
   
   return_data = dplyr::full_join(centered_data,mean_data,by = group_name) %>% 
-    dplyr::select(c(all_of(data_names),dplyr::ends_with('group_c'),dplyr::ends_with('_mean_z'),dplyr::everything()))
+    dplyr::select(c(dplyr::all_of(data_names),dplyr::ends_with('group_c'),dplyr::ends_with('_mean_z'),dplyr::everything()))
   
   
   return(return_data)    

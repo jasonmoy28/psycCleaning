@@ -24,6 +24,6 @@ Centering for multilevel analyses
 It will group mean center the L1 score and create a mean score for each L2 group.
 }
 \examples{
-center_mlm(iris,ends_with('Length',group = 'Species')
+center_mlm(iris,dplyr::ends_with('Length'),group = 'Species')
 
 }

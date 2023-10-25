@@ -16,11 +16,13 @@ z_scored_mlm_categorical(
 \arguments{
 \item{data}{dataframe}
 
+\item{effect_coded}{effect coded variables for L1 group-mean centering}
+
+\item{dummy_coded}{dummy-coded variables for L2 aggregated means}
+
 \item{group}{the grouping variable. Must be character}
 
 \item{keep_original}{default is `FALSE`. Set to `TRUE` to keep original columns}
-
-\item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be centered}
 }
 \value{
 return a dataframe with the columns z-scored (replace existing columns)
@@ -30,6 +32,5 @@ Z-scored for multilevel analyses
 It will group mean center and z-scored the L1 score and create a mean score for each L2 group.
 }
 \examples{
-z_scored_mlm(iris,ends_with('Length'),group = 'Species')
-
+iris \%>\% dplyr::mutate(cluster = rep(c(1,2,3),nrow(.)/3)) \%>\% effect_coding('Species',factor = FALSE) \%>\% dummy_coding('Species') \%>\% z_scored_mlm_categorical(effect_coded = dplyr::ends_with('eff'),dummy_coded = dplyr::ends_with('dum'),group = 'cluster')
 }

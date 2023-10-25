@@ -24,6 +24,6 @@ Z-scored for multilevel analyses
 It will group mean center and z-scored the L1 score and create a mean score for each L2 group.
 }
 \examples{
-z_scored_mlm(iris,ends_with('Length'),group = 'Species')
+z_scored_mlm(iris,dplyr::ends_with('Length'),group = 'Species')
 
 }

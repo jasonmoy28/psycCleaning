@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @examples
-#' z_scored_mlm(iris,ends_with('Length'),group = 'Species')
+#' z_scored_mlm(iris,dplyr::ends_with('Length'),group = 'Species')
 #'
 z_scored_mlm = function(data,cols,group,keep_original = TRUE){
   data_names = names(data)
@@ -20,7 +20,7 @@ z_scored_mlm = function(data,cols,group,keep_original = TRUE){
   group_name = data %>% dplyr::select(!!enquo(group)) %>% names()
   
   mean_data = data %>%
-    dplyr::group_by(across(!!group)) %>% 
+    dplyr::group_by(dplyr::across(!!group)) %>% 
     dplyr::summarise(dplyr::across(!!cols,~mean(.,na.rm = T))) %>%
     dplyr::mutate(dplyr::across(!!cols, function(x) { (x - mean(x,na.rm = TRUE))/stats::sd(x,na.rm = TRUE)})) %>% 
     dplyr::ungroup() %>% 
@@ -39,7 +39,7 @@ z_scored_mlm = function(data,cols,group,keep_original = TRUE){
   }
   
   return_data = dplyr::full_join(centered_data,mean_data,by = group_name) %>% 
-    dplyr::select(c(all_of(data_names),dplyr::ends_with('group_z'),dplyr::ends_with('_mean'),dplyr::everything()))
+    dplyr::select(c(dplyr::all_of(data_names),dplyr::ends_with('group_z'),dplyr::ends_with('_mean'),dplyr::everything()))
   
   
   return(return_data)    
