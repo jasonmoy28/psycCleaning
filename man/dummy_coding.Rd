@@ -2,22 +2,22 @@
 % Please edit documentation in R/dummy_coding.R
 \name{dummy_coding}
 \alias{dummy_coding}
-\title{Dummy Coding
-Create dummy coding columns}
+\title{Dummy Coding}
 \usage{
 dummy_coding(data, cols)
 }
 \arguments{
 \item{data}{data.frame object}
 
-\item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be re-coded}
+\item{cols}{Columns that need to be dummy-coded See `dplyr::dplyr_tidy_select` for available options.}
 }
 \value{
-return a data.frame with factors being dummy coded
+An object of the same type as .data. The output has the following properties:
+1. Columns from .data will be preserved.
+2. Columns that are dummy-coded.
 }
 \description{
-Dummy Coding
-Create dummy coding columns
+Create dummy-coded columns, supporting tidyselect syntax to process multiple columns simultaneously.
 }
 \examples{
 dummy_coding(iris,Species)

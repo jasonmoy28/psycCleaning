@@ -1,28 +1,40 @@
 #' Z-scored for multilevel analyses
-#' It will group mean center and z-scored the L1 score and create a mean score for each L2 group.
 #' 
-#' @param data dataframe
-#' @param effect_coded effect coded variables for L1 group-mean centering
-#' @param dummy_coded dummy-coded variables for L2 aggregated means
+#' This is a specialized function for mean centering categorical variables. There are two cases where this function should be used instead of the generic `center_mlm`. 
+#' 1. This function should be used when you need group mean centering for non-dummy-coded variables at L1. Variables at L2 are always dummy-coded as they represent the percentage of subjects in that group.
+#' 2. This function should be used whenever you want to z-score the aggregated L2 means
+#' 
+#' @param data A data.frame or a data.frame extension (e.g. a tibble).
+#' @param cols Dummy-coded or effect-coded columns for group-mean centering. Support `dplyr::dplyr_tidy_select` options. 
+#' @param dummy_coded Dummy-coded variables (cannot be effect-coded) for L2 aggregated means. Support `dplyr::dplyr_tidy_select` options. 
 #' @param group the grouping variable. Must be character
 #' @param keep_original default is `FALSE`. Set to `TRUE` to keep original columns
 #'
 #' @return
-#' return a dataframe with the columns z-scored (replace existing columns)
-#' @export
+#' An object of the same type as .data. The output has the following properties:
+#' 1. Columns from .data will be preserved
+#' 2. Columns with L1 scores that are group-mean centered 
+#' 3. Columns with L2 aggregated means (i.e., percentage) that are z-scored
 #' 
 #' @examples
-#' iris %>% dplyr::mutate(cluster = rep(c(1,2,3),nrow(.)/3)) %>% effect_coding('Species',factor = FALSE) %>% dummy_coding('Species') %>% z_scored_mlm_categorical(effect_coded = dplyr::ends_with('eff'),dummy_coded = dplyr::ends_with('dum'),group = 'cluster')
+#' psycCleaning::mlbook_red_data %>% z_scored_mlm_categorical(cols = 'female_eff', dummy_coded = 'female_dum',group = 'schoolnr')
 
 
-z_scored_mlm_categorical = function(data,effect_coded,dummy_coded,group,keep_original = TRUE){
+z_scored_mlm_categorical = function(data,cols,dummy_coded = NA,group,keep_original = TRUE){
+  try({if (is.na(dummy_coded)) {
+    dummy_coded = cols
+    dummy_coded = data %>% dplyr::select(!!enquo(dummy_coded)) %>% names()
+    warning('Cols are presumed to be dummy-coded')
+  }})
+  
   data_names = names(data)
-  effect_coded = data %>% dplyr::select(!!enquo(effect_coded)) %>% names()
+  cols = data %>% dplyr::select(!!enquo(cols)) %>% names()
   dummy_coded = data %>% dplyr::select(!!enquo(dummy_coded)) %>% names()
   group = enquo(group)
   group_name = data %>% dplyr::select(!!enquo(group)) %>% names()
   
-  # group mean
+  
+  # aggregated group mean
   mean_data = data %>%
     dplyr::group_by(dplyr::across(!!group)) %>% 
     dplyr::summarise(dplyr::across(!!dummy_coded,~mean(.,na.rm = T))) %>%
@@ -31,12 +43,12 @@ z_scored_mlm_categorical = function(data,effect_coded,dummy_coded,group,keep_ori
     dplyr::rename_with(.fn = ~paste0(.,'_mean_z',recycle0 = T),.cols = !!dummy_coded)
   
   # group-mean center
-  original_df = data %>% dplyr::select(!!effect_coded)
+  original_df = data %>% dplyr::select(!!cols)
   centered_data = data %>%
     dplyr::group_by(dplyr::across(!!group)) %>%
-    dplyr::mutate(dplyr::across(!!effect_coded, function(x) { (x - mean(x,na.rm = TRUE))})) %>% 
+    dplyr::mutate(dplyr::across(!!cols, function(x) { (x - mean(x,na.rm = TRUE))})) %>% 
     dplyr::ungroup() %>% 
-    dplyr::rename_with(~ paste(.,'_group_c',sep = ''),!!effect_coded) %>% 
+    dplyr::rename_with(~ paste(.,'_group_c',sep = ''),!!cols) %>% 
     dplyr::ungroup()
   if (keep_original == TRUE) {
     centered_data = dplyr::bind_cols(centered_data,original_df)

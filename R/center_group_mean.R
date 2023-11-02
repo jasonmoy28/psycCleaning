@@ -1,13 +1,17 @@
 #' Center with respect to group mean
 #'
-#' Center all columns with respect to the group mean. 
-#' @param data data frame. 
-#' @param cols vector or tidyselect syntax or helpers. column(s) that need to be centered.  Recommend using where(is.numeric) to exclude changing factors.
+#' This function will compute group-mean-centered scores.
+#' 
+#' @param data A data.frame or a data.frame extension (e.g. a tibble).
+#' @param cols Columns that need to be centered. See `dplyr::dplyr_tidy_select` for available options. 
 #' @param group character. grouping variable
-#' @param keep_original default is `FALSE`. Set to `TRUE` to keep original columns
+#' @param keep_original default is `TRUE`. Set to `FALSE` to remove original columns
 #' 
 #' @return
-#' return a data frame with the columns centered (replace existing columns)
+#' An object of the same type as .data. The output has the following properties:  
+#' 1. Columns from .data will be preserved
+#' 2. Columns with scores that are group-mean centered
+#' 
 #' @export
 #'
 #' @examples

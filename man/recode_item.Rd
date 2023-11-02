@@ -2,14 +2,14 @@
 % Please edit documentation in R/recode_item.R
 \name{recode_item}
 \alias{recode_item}
-\title{Re-code values of a data frame (support reverse code)}
+\title{Recode values of a data frame}
 \usage{
 recode_item(data, cols, code_from = NULL, code_to = NULL, retain_code = NULL)
 }
 \arguments{
-\item{data}{a data frame}
+\item{data}{A data.frame or a data.frame extension (e.g. a tibble).}
 
-\item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be re-coded}
+\item{cols}{Columns that need to be recoded. See `dplyr::dplyr_tidy_select` for available options.}
 
 \item{code_from}{vector. the order must match with vector for `code_to`}
 
@@ -18,10 +18,12 @@ recode_item(data, cols, code_from = NULL, code_to = NULL, retain_code = NULL)
 \item{retain_code}{vector. Specify the values to be retain}
 }
 \value{
-return a data frame  with values that has been recoded
+An object of the same type as .data. The output has the following properties:
+1. Columns except the recoded columns from .data will be preserved
+2. Recoded columns
 }
 \description{
-Re-code values of a data frame (support reverse code)
+Recode values of a data frame
 }
 \examples{
 pre_recoded_df = tibble::tibble(x1 = 1:5, x2 = 5:1)

@@ -1,12 +1,16 @@
 #' Center with respect to grand mean
 #'
-#' Center all columns with respect to the grand mean
-#' @param data dataframe
-#' @param cols vector or tidyselect syntax or helpers. column(s) that need to be centered. Recommend using where(is.numeric) to exclude changing factors.
+#' This function will compute grand-mean-centered scores.
+#' 
+#' @param data A data.frame or a data.frame extension (e.g. a tibble).
+#' @param cols Columns that need to be centered. See `dplyr::dplyr_tidy_select` for available options. 
 #' @param keep_original default is `FALSE`. Set to `TRUE` to keep original columns
 #' 
 #' @return
-#' return a dataframe with the columns centered (replace existing columns)
+#' An object of the same type as .data. The output has the following properties:  
+#' 1. Columns from .data will be preserved  
+#' 2. Columns with scores that are grand-mean-centered.  
+#' 
 #' @export
 #'
 #' @examples

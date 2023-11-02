@@ -1,17 +1,23 @@
 #' Dummy Coding
-#' Create dummy coding columns
+#' 
+#' Create dummy-coded columns, supporting tidyselect syntax to process multiple columns simultaneously.
+#' 
 #' @param data data.frame object 
-#' @param cols vector or tidyselect syntax or helpers. column(s) that need to be re-coded
+#' @param cols Columns that need to be dummy-coded See `dplyr::dplyr_tidy_select` for available options. 
 #'
 #' @return
-#' return a data.frame with factors being dummy coded
+#' An object of the same type as .data. The output has the following properties:
+#' 1. Columns from .data will be preserved.
+#' 2. Columns that are dummy-coded.
 #' @export
 #'
 #' @examples
 #' dummy_coding(iris,Species)
 #' 
 dummy_coding <- function(data,cols) {
-  cols_names = data %>%dplyr::select(!!enquo(cols)) %>% names()
+  data = data %>% dplyr::mutate(dplyr::across(!!enquo(cols),~as.factor(.)))
+  cols_names = data %>% dplyr::select(!!enquo(cols)) %>% names()
+  
   return_df = data
   for (group in cols_names) {
     group_name = data %>%dplyr::select(!!enquo(group)) %>% names()

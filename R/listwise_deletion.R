@@ -1,9 +1,12 @@
 #' Listwise deletion
 #'
-#' Perform listwise deletion (the entire rows is disregarded if the row has one NA value)
-#' @param data data frame
-#' @param cols vector or tidyselect syntax or helpers. column(s) that need to perform listwise deletion. Default is all columns (i.e., `dplyr::everything()`)
-#' return a data frame that has performed listwise deletion
+#' Perform listwise deletion (the entire rows is disregarded if the row has one `NA` value)
+#' 
+#' @param data A data.frame or a data.frame extension (e.g. a tibble).
+#' @param cols Columns that need to use listwise deletion. See `dplyr::dplyr_tidy_select` for available options. 
+#' @return 
+#' An object of the same type as .data with rows revmoed if the row has one `NA` value
+#' 
 #' @export
 #'
 #' @examples

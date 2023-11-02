@@ -1,16 +1,22 @@
 #' Effect Coding
+#' 
+#' Create effect-coded columns, supporting tidyselect syntax to process multiple columns simultaneously. 
 #'
-#' @param data data.frame object 
-#' @param cols vector or tidyselect syntax or helpers. column(s) that need to be re-coded
-#' @param factor If factor = `TRUE`, this function return a `tibble` with effect coded factors. If factor = `FALSE`, this function return a tibble with effect coded columns. 
-#' @return
-#' return a data.frame with factors being effect coded
+#' @param data A data.frame or a data.frame extension (e.g. a tibble).
+#' @param cols Columns that need to be effect-coded. See `dplyr::dplyr_tidy_select` for available options. 
+#' @param factor The default is `FALSE`. If factor is set to `TRUE`, this function returns a tibble with effect-coded factors. If factor is set to `FALSE`, this function returns a tibble with effect-coded columns.
+#' 
+#' @return 
+#' An object of the same type as .data. The output has the following properties:
+#' 1. Columns from .data will be preserved.
+#' 2. Columns that are effect-coded.
 #' @export
 #'
 #' @examples
 #' effect_coding(iris,Species)
 #' 
-effect_coding = function(data,cols,factor = TRUE){
+effect_coding = function(data,cols,factor = FALSE){
+  data = data %>% dplyr::mutate(dplyr::across(!!enquo(cols),~as.factor(.)))
   if (factor == TRUE) {
     names = data %>% dplyr::select(!!enquo(cols)) %>% colnames(.)
     return_df = data %>% dplyr::mutate(dplyr::across(dplyr::all_of(names),~as.factor(.)))
@@ -19,7 +25,7 @@ effect_coding = function(data,cols,factor = TRUE){
     }
     return(return_df) 
   } else if(factor == FALSE){
-    cols_names = data %>%dplyr::select(!!enquo(cols)) %>% names()
+    cols_names = data %>% dplyr::select(!!enquo(cols)) %>% names()
     return_df = data
     for (group in cols_names) {
       group_name = data %>% dplyr::select(!!enquo(group)) %>% names()

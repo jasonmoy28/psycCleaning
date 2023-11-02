@@ -1,12 +1,15 @@
-#' Z scored with with respect to the grand mean
-#'
-#' Z-scored that uses the grand mean in the z-score formula
-#' @param data dataframe
-#' @param cols vector or tidyselect syntax or helpers. column(s) that need to be centered
+#' Grand mean z-score
+#' 
+#' This function will compute z-scores with respect to the grand mean.
+#' 
+#' @param data A data.frame or a data.frame extension (e.g. a tibble).
+#' @param cols Columns that need to be centered. See `dplyr::dplyr_tidy_select` for available options. 
 #' @param keep_original default is `FALSE`. Set to `TRUE` to keep original columns
 #'
 #' @return
-#' return a dataframe with the columns z-scored (replace existing columns)
+#' An object of the same type as .data. The output has the following properties:
+#' 1. Columns from .data will be preserved
+#' 2. Columns with scores that are z-scored 
 #' @export
 #'
 #' @examples

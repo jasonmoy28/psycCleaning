@@ -2,26 +2,27 @@
 % Please edit documentation in R/center_mlm.R
 \name{center_mlm}
 \alias{center_mlm}
-\title{Centering for multilevel analyses
-It will group mean center the L1 score and create a mean score for each L2 group.}
+\title{Centering for multilevel analyses}
 \usage{
 center_mlm(data, cols, group, keep_original = TRUE)
 }
 \arguments{
-\item{data}{dataframe}
+\item{data}{A data.frame or a data.frame extension (e.g. a tibble).}
 
-\item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be centered}
+\item{cols}{Columns that need to be centered. See `dplyr::dplyr_tidy_select` for available options.}
 
-\item{group}{the grouping variable. Must be character}
+\item{group}{the grouping variable. Must be character.}
 
-\item{keep_original}{default is `FALSE`. Set to `TRUE` to keep original columns}
+\item{keep_original}{default is `TRUE`. Set to `FALSE` to remove original columns}
 }
 \value{
-return a dataframe with the columns z-scored (replace existing columns)
+An object of the same type as .data. The output has the following properties:  
+1. Columns from .data will be preserved  
+2. Columns with L1 scores that are group-mean centered.  
+3. Columns with L2 aggregated means.
 }
 \description{
-Centering for multilevel analyses
-It will group mean center the L1 score and create a mean score for each L2 group.
+This function will group mean centered the scores at the level 1 and create a mean score for each group at L2.
 }
 \examples{
 center_mlm(iris,dplyr::ends_with('Length'),group = 'Species')

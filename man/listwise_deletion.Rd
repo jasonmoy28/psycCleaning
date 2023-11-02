@@ -7,13 +7,15 @@
 listwise_deletion(data, cols = dplyr::everything())
 }
 \arguments{
-\item{data}{data frame}
+\item{data}{A data.frame or a data.frame extension (e.g. a tibble).}
 
-\item{cols}{vector or tidyselect syntax or helpers. column(s) that need to perform listwise deletion. Default is all columns (i.e., `dplyr::everything()`)
-return a data frame that has performed listwise deletion}
+\item{cols}{Columns that need to use listwise deletion. See `dplyr::dplyr_tidy_select` for available options.}
+}
+\value{
+An object of the same type as .data with rows revmoed if the row has one `NA` value
 }
 \description{
-Perform listwise deletion (the entire rows is disregarded if the row has one NA value)
+Perform listwise deletion (the entire rows is disregarded if the row has one `NA` value)
 }
 \examples{
 test_df = data.frame(col1 = c(1,2,3),col2 = c(1,NA,3),col3 = c(1,2,NA))

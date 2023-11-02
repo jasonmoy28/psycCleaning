@@ -2,7 +2,7 @@
 % Please edit documentation in R/summarize_missing_values.R
 \name{summarize_missing_values}
 \alias{summarize_missing_values}
-\title{Count the number of missing / `NA` values}
+\title{Count the number of missing values}
 \usage{
 summarize_missing_values(
   data,
@@ -13,9 +13,9 @@ summarize_missing_values(
 )
 }
 \arguments{
-\item{data}{data frame.}
+\item{data}{A data.frame or a data.frame extension (e.g. a tibble).}
 
-\item{cols}{vector or tidyselect syntax or helpers. default is all columns}
+\item{cols}{Columns that need to be checked for missing values. See `dplyr::dplyr_tidy_select` for available options.}
 
 \item{group}{character. count missing values by group.}
 
@@ -24,10 +24,10 @@ summarize_missing_values(
 \item{return_result}{default is `FALSE`. Return `data_frame` if set to yes}
 }
 \value{
-return a data frame with the number of NA values of each columns if `return_result = TRUE`
+An object of the same type as .data. that specified the number of NA values of the columns (only when `return_result = TRUE`)
 }
 \description{
-It counts the number of missing / `NA` values in each column.
+It counts the number of missing (i.e.,`NA`) values in each column.
 }
 \examples{
 df1 = data.frame(col1 = c(1,2,3),col2 = c(1,NA,3),col3 = c(1,2,NA))

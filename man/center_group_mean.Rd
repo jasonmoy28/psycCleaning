@@ -7,19 +7,21 @@
 center_group_mean(data, cols, group, keep_original = TRUE)
 }
 \arguments{
-\item{data}{data frame.}
+\item{data}{A data.frame or a data.frame extension (e.g. a tibble).}
 
-\item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be centered.  Recommend using where(is.numeric) to exclude changing factors.}
+\item{cols}{Columns that need to be centered. See `dplyr::dplyr_tidy_select` for available options.}
 
 \item{group}{character. grouping variable}
 
-\item{keep_original}{default is `FALSE`. Set to `TRUE` to keep original columns}
+\item{keep_original}{default is `TRUE`. Set to `FALSE` to remove original columns}
 }
 \value{
-return a data frame with the columns centered (replace existing columns)
+An object of the same type as .data. The output has the following properties:  
+1. Columns from .data will be preserved
+2. Columns with scores that are group-mean centered
 }
 \description{
-Center all columns with respect to the group mean.
+This function will compute group-mean-centered scores.
 }
 \examples{
 center_group_mean(iris,where(is.numeric), group = Species)

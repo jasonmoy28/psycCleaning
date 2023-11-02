@@ -4,20 +4,22 @@
 \alias{effect_coding}
 \title{Effect Coding}
 \usage{
-effect_coding(data, cols, factor = TRUE)
+effect_coding(data, cols, factor = FALSE)
 }
 \arguments{
-\item{data}{data.frame object}
+\item{data}{A data.frame or a data.frame extension (e.g. a tibble).}
 
-\item{cols}{vector or tidyselect syntax or helpers. column(s) that need to be re-coded}
+\item{cols}{Columns that need to be effect-coded. See `dplyr::dplyr_tidy_select` for available options.}
 
-\item{factor}{If factor = `TRUE`, this function return a `tibble` with effect coded factors. If factor = `FALSE`, this function return a tibble with effect coded columns.}
+\item{factor}{The default is `FALSE`. If factor is set to `TRUE`, this function returns a tibble with effect-coded factors. If factor is set to `FALSE`, this function returns a tibble with effect-coded columns.}
 }
 \value{
-return a data.frame with factors being effect coded
+An object of the same type as .data. The output has the following properties:
+1. Columns from .data will be preserved.
+2. Columns that are effect-coded.
 }
 \description{
-Effect Coding
+Create effect-coded columns, supporting tidyselect syntax to process multiple columns simultaneously.
 }
 \examples{
 effect_coding(iris,Species)

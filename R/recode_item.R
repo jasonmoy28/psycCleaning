@@ -1,13 +1,17 @@
-#' Re-code values of a data frame (support reverse code)
+#' Recode values of a data frame 
+#' 
+# 'Recode values of multiple columns. The function is most suitable for reverse coding. 
 #'
-#' @param data a data frame
-#' @param cols vector or tidyselect syntax or helpers. column(s) that need to be re-coded
+#' @param data A data.frame or a data.frame extension (e.g. a tibble).
+#' @param cols Columns that need to be recoded. See `dplyr::dplyr_tidy_select` for available options. 
 #' @param code_from vector. the order must match with vector for `code_to`
 #' @param code_to vector. the order must match with vector for `code_from`
 #' @param retain_code vector. Specify the values to be retain 
 #'
 #' @return 
-#' return a data frame  with values that has been recoded
+#' An object of the same type as .data. The output has the following properties:
+#' 1. Columns except the recoded columns from .data will be preserved
+#' 2. Recoded columns
 #' 
 #' @export
 #' @examples

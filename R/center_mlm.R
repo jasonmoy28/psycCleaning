@@ -1,13 +1,18 @@
 #' Centering for multilevel analyses
-#' It will group mean center the L1 score and create a mean score for each L2 group.
 #' 
-#' @param data dataframe
-#' @param cols vector or tidyselect syntax or helpers. column(s) that need to be centered
-#' @param group the grouping variable. Must be character
-#' @param keep_original default is `FALSE`. Set to `TRUE` to keep original columns
+#' This function will group mean centered the scores at the level 1 and create a mean score for each group at L2. 
+#' 
+#' @param data A data.frame or a data.frame extension (e.g. a tibble).
+#' @param cols Columns that need to be centered. See `dplyr::dplyr_tidy_select` for available options. 
+#' @param group the grouping variable. Must be character.
+#' @param keep_original default is `TRUE`. Set to `FALSE` to remove original columns
 
 #' @return
-#' return a dataframe with the columns z-scored (replace existing columns)
+#' An object of the same type as .data. The output has the following properties:  
+#' 1. Columns from .data will be preserved  
+#' 2. Columns with L1 scores that are group-mean centered.  
+#' 3. Columns with L2 aggregated means.
+#' 
 #' @export
 #'
 #' @examples
@@ -19,13 +24,15 @@ center_mlm = function(data,cols,group,keep_original = TRUE){
   group = enquo(group)
   group_name = data %>% dplyr::select(!!enquo(group)) %>% names()
 
+  # aggregate mean
   mean_data = data %>%
     dplyr::group_by(dplyr::across(!!group)) %>% 
     dplyr::summarise(dplyr::across(!!cols,~mean(.,na.rm = T))) %>%
-    dplyr::mutate(dplyr::across(!!cols, function(x) { (x - mean(x,na.rm = TRUE))})) %>% 
+    #dplyr::mutate(dplyr::across(!!cols, function(x) { (x - mean(x,na.rm = TRUE))})) %>% 
     dplyr::ungroup() %>% 
     dplyr::rename_with(.fn = ~paste0(.,'_mean',recycle0 = T),.cols = !!cols)
 
+  # group-mean centering
   original_df = data %>% dplyr::select(!!cols)
   centered_data = data %>%
     dplyr::group_by(dplyr::across(!!group)) %>%

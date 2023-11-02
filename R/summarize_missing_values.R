@@ -1,15 +1,16 @@
-#' Count the number of missing / `NA` values
+#' Count the number of missing values
 #'
-#' It counts the number of missing / `NA` values in each column.
+#' It counts the number of missing (i.e.,`NA`) values in each column.
 #'
-#' @param data data frame.
-#' @param cols vector or tidyselect syntax or helpers. default is all columns
+#' @param data A data.frame or a data.frame extension (e.g. a tibble).
+#' @param cols Columns that need to be checked for missing values. See `dplyr::dplyr_tidy_select` for available options. 
 #' @param verbose default is `TRUE`. Print the missing value data frame
 #' @param return_result default is `FALSE`. Return `data_frame` if set to yes
 #' @param group character. count missing values by group. 
 #'
 #' @return
-#' return a data frame with the number of NA values of each columns if `return_result = TRUE`
+#' An object of the same type as .data. that specified the number of NA values of the columns (only when `return_result = TRUE`)
+#' 
 #' @export
 #'
 #' @examples

@@ -1,14 +1,16 @@
 #' Composite column
 #'
-#' The function will perform a rowise aggregation which then divided by the total number of columns. It ignores rows with any NA value (i.e, will use listwise deletion)
-#'
-#' @param data dataframe
-#' @param cols vector or tidyselect syntax or helpers. column(s) that need to be composite
-#' @param composite_col_name character. default as 'composite_column'. the column name of the composite column
-#' @param na.rm ignore NA
+#' The function will perform a row-wise aggregation which then divided by the total number of columns. 
+#' 
+#' @param data A data.frame or a data.frame extension (e.g. a tibble).
+#' @param cols Columns that need to be composited See `dplyr::dplyr_tidy_select` for available options.
+#' @param composite_col_name Name for the new composited columns. Default is 'composite_column'.
+#' @param na.rm  Ignore NA. The default is `FALSE`. If set to `TRUE`, the composite score will be `NA` if there is one or more `NA` in any of the columns.
 #'
 #' @return
-#' return a dataframe with a new column with the composite score
+#' An object of the same type as .data. The output has the following properties:
+#' 1. Columns from .data will be preserved.
+#' 2. Columns with composited scores.
 #' @export
 #'
 #' @examples
