@@ -35,5 +35,5 @@ This is a specialized function for mean centering categorical variables. There a
 2. This function should be used whenever you want to z-score the aggregated L2 means
 }
 \examples{
-psycCleaning::mlbook_red_data \%>\% z_scored_mlm_categorical(cols = 'female_eff', dummy_coded = 'female_dum',group = 'schoolnr')
+mlbook_data \%>\% z_scored_mlm_categorical(cols = 'female_eff', dummy_coded = 'female_dum',group = 'schoolnr')
 }

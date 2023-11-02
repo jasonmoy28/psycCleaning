@@ -9,15 +9,14 @@
 #' @param dummy_coded Dummy-coded variables (cannot be effect-coded) for L2 aggregated means. Support `dplyr::dplyr_tidy_select` options. 
 #' @param group the grouping variable. Must be character
 #' @param keep_original default is `FALSE`. Set to `TRUE` to keep original columns
-#'
+#' @export
 #' @return
 #' An object of the same type as .data. The output has the following properties:
 #' 1. Columns from .data will be preserved
 #' 2. Columns with L1 scores that are group-mean centered 
 #' 3. Columns with L2 aggregated means (i.e., percentage) that are z-scored
 #' 
-#' @examples
-#' psycCleaning::mlbook_red_data %>% z_scored_mlm_categorical(cols = 'female_eff', dummy_coded = 'female_dum',group = 'schoolnr')
+#' @examples z_scored_mlm_categorical(mlbook_data,'female_eff','female_dum','schoolnr')
 
 
 z_scored_mlm_categorical = function(data,cols,dummy_coded = NA,group,keep_original = TRUE){
