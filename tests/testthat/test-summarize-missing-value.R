@@ -8,8 +8,8 @@ testthat::test_that('summarize_missing_values: no group',{
   
   missing_value_summary = summarize_missing_values(test_df,
                                                    cols = a:d,
-                                                   return_result = T,
-                                                   verbose = F)
+                                                   return_result = TRUE,
+                                                   verbose = FALSE)
   
   testthat::expect_equal(missing_value_summary$miss_count, c(3,5,1,4))
   testthat::expect_equal(missing_value_summary$non_miss_count,c(8,6,10,7))
@@ -24,7 +24,7 @@ test_df = data.frame(
   d = c(NA,3,5,7,NA,3,2,4,NA,NA,3)
 )
 
-missing_summary = summarize_missing_values(test_df,cols = a:d,group = condition,return_result = T,verbose = F)
+missing_summary = summarize_missing_values(test_df,cols = a:d,group = condition,return_result = TRUE,verbose = FALSE)
 testthat::expect_equal(missing_summary$miss_count, c(0,1,0,1,1,1,1,1,2,3,0,2))
 testthat::expect_equal(missing_summary$non_miss_count, c(3,2,3,2,2,2,2,2,3,2,5,3))
 })

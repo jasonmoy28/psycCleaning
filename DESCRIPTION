@@ -2,9 +2,13 @@ Package: psycCleaning
 Type: Package
 Title: Toolkit for Data Cleaning
 Version: 0.1.0
-Author: Jason Moy
-Maintainer: Jason Moy <jason.moyhj@gmail.com>
-Description: A beginner-friendly R package that contains many useful functions for data cleaning for psychological research, such as composite test scores, re-coding items, and summarizing number of NA values in a data frame. 
+Authors@R: 
+    person(given = "Jason",
+           family = "Moy",
+           role = c("aut", "cre"),
+           email = "jason.moyhj@gmail.com",
+           comment = c(ORCID = "0000-0001-8795-3311"))
+Description: An R package for preparing and cleaning data. It includes functions to center data, reverse coding, dummy code and effect code data, and more.
 License: GPL (>= 3)
 Encoding: UTF-8
 RoxygenNote: 7.2.3

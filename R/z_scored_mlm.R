@@ -28,10 +28,10 @@ z_scored_mlm = function(data,cols,group,keep_original = TRUE){
   
   mean_data = data %>%
     dplyr::group_by(dplyr::across(!!group)) %>% 
-    dplyr::summarise(dplyr::across(!!cols,~mean(.,na.rm = T))) %>%
+    dplyr::summarise(dplyr::across(!!cols,~mean(.,na.rm = TRUE))) %>%
     dplyr::mutate(dplyr::across(!!cols, function(x) { (x - mean(x,na.rm = TRUE))/stats::sd(x,na.rm = TRUE)})) %>% 
     dplyr::ungroup() %>% 
-    dplyr::rename_with(.fn = ~paste0(.,'_mean_z',recycle0 = T),.cols = !!cols)
+    dplyr::rename_with(.fn = ~paste0(.,'_mean_z',recycle0 = TRUE),.cols = !!cols)
   
   original_df = data %>% dplyr::select(!!cols)
   centered_data = data %>%

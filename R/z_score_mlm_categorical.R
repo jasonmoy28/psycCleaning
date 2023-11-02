@@ -16,7 +16,8 @@
 #' 2. Columns with L1 scores that are group-mean centered 
 #' 3. Columns with L2 aggregated means (i.e., percentage) that are z-scored
 #' 
-#' @examples z_scored_mlm_categorical(mlbook_data,'female_eff','female_dum','schoolnr')
+#' @examples 
+#' z_scored_mlm_categorical(mlbook_data,cols='female_eff',dummy_coded='female_dum','schoolnr')
 
 
 z_scored_mlm_categorical = function(data,cols,dummy_coded = NA,group,keep_original = TRUE){
@@ -36,10 +37,10 @@ z_scored_mlm_categorical = function(data,cols,dummy_coded = NA,group,keep_origin
   # aggregated group mean
   mean_data = data %>%
     dplyr::group_by(dplyr::across(!!group)) %>% 
-    dplyr::summarise(dplyr::across(!!dummy_coded,~mean(.,na.rm = T))) %>%
+    dplyr::summarise(dplyr::across(!!dummy_coded,~mean(.,na.rm = TRUE))) %>%
     dplyr::mutate(dplyr::across(!!dummy_coded, function(x) { (x - mean(x,na.rm = TRUE))/stats::sd(x,na.rm = TRUE)})) %>% 
     dplyr::ungroup() %>% 
-    dplyr::rename_with(.fn = ~paste0(.,'_mean_z',recycle0 = T),.cols = !!dummy_coded)
+    dplyr::rename_with(.fn = ~paste0(.,'_mean_z',recycle0 = TRUE),.cols = !!dummy_coded)
   
   # group-mean center
   original_df = data %>% dplyr::select(!!cols)

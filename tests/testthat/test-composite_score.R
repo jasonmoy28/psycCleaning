@@ -16,14 +16,14 @@ test_that("composite_score: standard usecase", {
                          ))
 })
 
-test_that("composite_score: na.rm = T", {
+test_that("composite_score: na.rm = TRUE", {
   test_df = data.frame(
     col1 = c(1, 4, 4, 4),
     col2 = c(1, 6, 3, 10),
     col3 = c(1, 8, NA, 4),
     extra = c(5, 6, 2, NA)
   )
-  composite_df = composite_score(data = test_df, cols = everything(),na.rm = T)
+  composite_df = composite_score(data = test_df, cols = everything(),na.rm = TRUE)
   testthat::expect_equal(composite_df,
                          data.frame(
                            col1 = c(1, 4, 4, 4),
