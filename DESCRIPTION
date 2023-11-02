@@ -3,7 +3,7 @@ Type: Package
 Title: Toolkit for Data Cleaning
 Version: 0.1.0
 Author: Jason Moy
-Maintainer: Jason Moy <jmoy1@uw.edu>
+Maintainer: Jason Moy <jason.moyhj@gmail.com>
 Description: A beginner-friendly R package that contains many useful functions for data cleaning for psychological research, such as composite test scores, re-coding items, and summarizing number of NA values in a data frame. 
 License: GPL (>= 3)
 Encoding: UTF-8
@@ -20,3 +20,6 @@ Suggests:
     testthat (>= 3.0.0)
 URL: https://jasonmoy28.github.io/psycCleaning/
 Config/testthat/edition: 3
+Depends: 
+    R (>= 2.10)
+LazyData: true
