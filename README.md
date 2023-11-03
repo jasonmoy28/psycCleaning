@@ -3,10 +3,10 @@
 ##  Data Cleaning for Psychological Analyses
 
 <!-- badges: start -->
+[![CRAN latest release](https://www.r-pkg.org/badges/last-release/psycCleaning)](https://cran.r-project.org/package=psycCleaning)
 [![CRAN version](https://img.shields.io/cran/v/psycCleaning)](https://cran.r-project.org/package=psycCleaning)
 [![R-CMD-check](https://github.com/jasonmoy28/psycCleaning/actions/workflows/R-CMD-check.yaml/badge.svg/)](https://github.com/jasonmoy28/psycCleaning/actions/workflows/R-CMD-check.yaml/) 
 [![Codecov test coverage](https://codecov.io/gh/jasonmoy28/psycCleaning/branch/master/graph/badge.svg/)](https://app.codecov.io/gh/jasonmoy28/psycCleaning?branch=master)
-[![download-total](https://cranlogs.r-pkg.org/badges/grand-total/psycCleaning)](https://cran.r-project.org/package=psycCleaning)
 
 <!-- badges: end -->
 
