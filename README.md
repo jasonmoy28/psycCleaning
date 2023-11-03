@@ -1,6 +1,6 @@
 # psycCleaning
 
-## Toolkit for Data Cleaning in Psychology
+##  Data Cleaning for Psychological Analyses
 
 <!-- badges: start -->
 [![CRAN version](https://img.shields.io/cran/v/psycCleaning)](https://cran.r-project.org/package=psycCleaning)
