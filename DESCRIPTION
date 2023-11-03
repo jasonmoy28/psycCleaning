@@ -21,6 +21,7 @@ Imports:
 Suggests: 
     roxygen2,
     covr,
+    misty,
     testthat (>= 3.0.0)
 URL: https://jasonmoy28.github.io/psycCleaning/
 Config/testthat/edition: 3
