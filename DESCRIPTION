@@ -1,7 +1,7 @@
 Package: psycCleaning
 Type: Package
 Title: Data Cleaning for Psychological Analyses
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: 
     person(given = "Jason",
            family = "Moy",
