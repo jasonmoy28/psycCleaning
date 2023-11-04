@@ -24,7 +24,7 @@ testthat::test_that('center_group_mean', code = {
 })
 
 
-testthat::test_that('z_score_group_mean', code = {
+testthat::test_that('z_scored_group_mean', code = {
   centered_col = z_scored_group_mean(iris,cols = 'Sepal.Length',group = 'Species') %>% dplyr::pull('Sepal.Length_group_z')
   check_centered_col = misty::center(iris$Sepal.Length,type = 'CWC',cluster = iris$Species) %>% scale(center = TRUE,scale = TRUE) %>% as.numeric()
   testthat::expect_equal(centered_col,check_centered_col)
