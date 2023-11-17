@@ -20,7 +20,7 @@ z_scored_grand_mean = function(data,cols,keep_original=TRUE) {
   original_df = data %>% dplyr::select(!!cols)
   return_df = data %>%
     dplyr::mutate(dplyr::across(!!cols, function(x) { (x - mean(x,na.rm = TRUE))/stats::sd(x,na.rm = TRUE)})) %>% 
-    dplyr::rename_with(~ paste(.,'_grand_z',sep = ''),!!cols)
+    dplyr::rename_with(~ paste(.,'_z',sep = ''),!!cols)
   if (keep_original == TRUE) {
       return_df = dplyr::bind_cols(return_df,original_df)
   }
