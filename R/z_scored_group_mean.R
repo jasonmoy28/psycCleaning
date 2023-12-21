@@ -16,6 +16,10 @@
 z_scored_group_mean = function(data,cols,group,keep_original=TRUE) {
   cols = enquo(cols)
   group = enquo(group)
+  group_num = data %>% dplyr::select(!!enquo(group)) %>% names %>% length()
+  if (group_num == 0) {
+    stop('Group variable need to be specified') 
+  }
   original_df = data %>% dplyr::select(!!cols)
   
   return_df = data %>%

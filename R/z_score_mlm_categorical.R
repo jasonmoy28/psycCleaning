@@ -32,7 +32,10 @@ z_scored_mlm_categorical = function(data,cols,dummy_coded = NA,group,keep_origin
   dummy_coded = data %>% dplyr::select(!!enquo(dummy_coded)) %>% names()
   group = enquo(group)
   group_name = data %>% dplyr::select(!!enquo(group)) %>% names()
-  
+  group_num = group_name %>% length()
+  if (group_num == 0) {
+    stop('Group variable need to be specified') 
+  }
   
   # aggregated group mean
   mean_data = data %>%

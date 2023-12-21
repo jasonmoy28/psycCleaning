@@ -23,7 +23,12 @@ center_mlm = function(data,cols,group,keep_original = TRUE){
   cols = data %>% dplyr::select(!!enquo(cols)) %>% names()
   group = enquo(group)
   group_name = data %>% dplyr::select(!!enquo(group)) %>% names()
-
+  
+  group_num = group_name %>% length()
+  if (group_num == 0) {
+    stop('Group variable need to be specified') 
+  }
+  
   # aggregate mean
   mean_data = data %>%
     dplyr::group_by(dplyr::across(!!group)) %>% 
