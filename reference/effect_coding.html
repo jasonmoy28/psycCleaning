@@ -54,7 +54,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">effect_coding</span><span class="op">(</span><span class="va">data</span>, <span class="va">cols</span>, factor <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">effect_coding</span><span class="op">(</span><span class="va">data</span>, <span class="va">cols</span>, factor <span class="op">=</span> <span class="cn">FALSE</span>, ref_group <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -69,6 +69,10 @@
 
 <dt>factor</dt>
 <dd><p>The default is `FALSE`. If factor is set to `TRUE`, this function returns a tibble with effect-coded factors. If factor is set to `FALSE`, this function returns a tibble with effect-coded columns.</p></dd>
+
+
+<dt>ref_group</dt>
+<dd><p>Reference group. Optional.</p></dd>
 
 </dl></div>
     <div id="value">
