@@ -5,6 +5,7 @@
 #' @param data A data.frame or a data.frame extension (e.g. a tibble).
 #' @param cols Columns that need to be effect-coded. See `dplyr::dplyr_tidy_select` for available options. 
 #' @param factor The default is `FALSE`. If factor is set to `TRUE`, this function returns a tibble with effect-coded factors. If factor is set to `FALSE`, this function returns a tibble with effect-coded columns.
+#' @param ref_group Reference group. Optional.
 #' 
 #' @return 
 #' An object of the same type as .data. The output has the following properties:
@@ -15,7 +16,7 @@
 #' @examples
 #' effect_coding(iris,Species)
 #' 
-effect_coding = function(data,cols,factor = FALSE){
+effect_coding = function(data,cols,factor = FALSE,ref_group = NULL){
   data = data %>% dplyr::mutate(dplyr::across(!!enquo(cols),~as.factor(.)))
   if (factor == TRUE) {
     names = data %>% dplyr::select(!!enquo(cols)) %>% colnames(.)
@@ -25,6 +26,7 @@ effect_coding = function(data,cols,factor = FALSE){
     }
     return(return_df) 
   } else if(factor == FALSE){
+    data = data %>% dplyr::mutate(dplyr::across(!!enquo(cols),~as.factor(.)))
     cols_names = data %>% dplyr::select(!!enquo(cols)) %>% names()
     return_df = data
     for (group in cols_names) {
@@ -32,14 +34,20 @@ effect_coding = function(data,cols,factor = FALSE){
       distinct_group = data %>% dplyr::distinct(dplyr::across(!!enquo(group))) %>% dplyr::pull(.) %>% as.character() %>% .[!is.na(.)] 
       distinct_group_num = length(distinct_group)
       contrasts_df = data.frame(stats::contr.sum(distinct_group_num))
-      colnames(contrasts_df) = paste0(group_name,'_',distinct_group[1:nrow(contrasts_df)-1],'_eff')
+      if (is.null(ref_group)) {
+        colnames(contrasts_df) = paste0(group_name,'_',distinct_group[1:nrow(contrasts_df)-1],'_eff')
+      } else {
+        distinct_group = distinct_group[distinct_group != ref_group]
+        colnames(contrasts_df) = paste0(group_name,'_',distinct_group,'_eff')
+        distinct_group = c(distinct_group,ref_group)
+      }
       effect_coded_df = contrasts_df %>% 
-       dplyr::mutate(group = distinct_group) %>% 
-       dplyr::rename(!!enquo(group):=group)
+        dplyr::mutate(group = distinct_group) %>% 
+        dplyr::rename(!!enquo(group):=group)
       return_df =dplyr::full_join(return_df,effect_coded_df)
     }
+}
     return(return_df)
     
   }
-}
 

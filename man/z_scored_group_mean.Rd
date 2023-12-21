@@ -16,7 +16,7 @@ z_scored_group_mean(data, cols, group, keep_original = TRUE)
 \item{keep_original}{default is `FALSE`. Set to `TRUE` to keep original columns}
 }
 \value{
-return a dataframe with the columns z-scored (replace existing columns)
+return a dataframe with a group-mean centered columns that are z-scored with respect to the grand mean.
 }
 \description{
 This function will compute group-mean-centered scores, and then z-scored the group-mean-centered scores with respect to the grand mean.

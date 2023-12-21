@@ -4,7 +4,7 @@
 \alias{effect_coding}
 \title{Effect Coding}
 \usage{
-effect_coding(data, cols, factor = FALSE)
+effect_coding(data, cols, factor = FALSE, ref_group = NULL)
 }
 \arguments{
 \item{data}{A data.frame or a data.frame extension (e.g. a tibble).}
@@ -12,6 +12,8 @@ effect_coding(data, cols, factor = FALSE)
 \item{cols}{Columns that need to be effect-coded. See `dplyr::dplyr_tidy_select` for available options.}
 
 \item{factor}{The default is `FALSE`. If factor is set to `TRUE`, this function returns a tibble with effect-coded factors. If factor is set to `FALSE`, this function returns a tibble with effect-coded columns.}
+
+\item{ref_group}{Reference group. Optional.}
 }
 \value{
 An object of the same type as .data. The output has the following properties:
