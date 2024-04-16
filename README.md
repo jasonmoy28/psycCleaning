@@ -7,7 +7,8 @@
 [![CRAN version](https://img.shields.io/cran/v/psycCleaning)](https://cran.r-project.org/package=psycCleaning)
 [![R-CMD-check](https://github.com/jasonmoy28/psycCleaning/actions/workflows/R-CMD-check.yaml/badge.svg/)](https://github.com/jasonmoy28/psycCleaning/actions/workflows/R-CMD-check.yaml/) 
 [![Codecov test coverage](https://codecov.io/gh/jasonmoy28/psycCleaning/branch/master/graph/badge.svg/)](https://app.codecov.io/gh/jasonmoy28/psycCleaning?branch=master)
-
+[![download-total](https://cranlogs.r-pkg.org/badges/grand-total/psycCleaning)](https://cran.r-project.org/package=psycCleaning)
+[![download-monthly](https://cranlogs.r-pkg.org/badges/psycCleaning)](https://cran.r-project.org/package=psycCleaning)
 <!-- badges: end -->
 
 # Installation
